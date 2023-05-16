@@ -1,5 +1,5 @@
 ---
-layout: archives
+layout: contacts
 icon: fas fa-archive
 order: 3
 ---
