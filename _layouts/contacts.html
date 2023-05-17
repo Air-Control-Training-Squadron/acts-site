@@ -1,3 +1,19 @@
 ---
 layout: page
 ---
+
+<div class="container">
+    <div class="row">
+      {% for contact in site.data.contacts %}
+        <div class="col-md-4">
+          <h3>{{ contact.name }}</h2>
+          {% if contact.location %}
+            <p>{{ contact.location }}</p>
+          {% endif %}
+          {% for phone in contact.phones %}
+            <p><a href="tel:{{ phone }}">{{ phone }}</a></p>
+          {% endfor %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>

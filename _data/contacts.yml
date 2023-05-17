@@ -1,0 +1,86 @@
+# Contacts on base. Not to be confused with contact.yml, which is for contacting the site owner. Confusing, I know
+
+- name: "Installation Sexual Assault Response Coordinator (SARC)"
+  phones:
+    - "7608307188"
+  location: "Bldg. 1417, 4th & Sturgis"
+
+- name: "24/7 Sexual Assault Support Line"
+  phones:
+    - "7607990273"
+
+- name: "24/7 Domestic Violence Support Line"
+  phones:
+    - "8312062789"
+
+- name: "MAGTFTC / MCAGCC Duty Chaplain"
+  phones:
+    - "7608307200"
+    - "7608614739"
+
+- name: "Community Counseling Center (CCC)"
+  phones:
+    - "7608307277"
+  location: "Bldg. 1438, 4th & Sturgis"
+
+- name: "Adult Medical Care Clinic (AMCC)"
+  phones:
+    - "7608302621"
+  location: "Bldg. 1438, 4th & Sturgis"
+  
+- name: "Marine Intercept Program"
+  phones:
+    - "7608307277"
+  location: "Bldg. 1438, 4th & Sturgis"
+
+- name: "Robert E. Bush Naval Hospital"
+  phones:
+    - "7608302190"
+  location: "1145 Sturgis Rd."
+
+- name: "Victims Legal Counsel"
+  phones:
+    - "7608305162"
+  location: "Bldg. 1417, 4th & Sturgis"
+
+- name: "PMO"
+  phones:
+    - "7608306800"
+  location: "Bldg. 1407, 4th St."
+
+- name: "NCIS"
+  phones:
+    - "7608306275"
+  location: "Bldg. 1031, Del Valle Rd."
+
+- name: "DSTRESS LINE"
+  phones:
+    - "8774767734"
+
+- name: "Military One Source"
+  phones:
+    - "8003429647"
+
+- name: "DoD Safe Helpline"
+  phones:
+    - "8779555247"
+
+- name: "Partners Against Violence"
+  phones:
+    - "7603693353"
+  location: "58945 Business Center Dr., Suite C, Yucca Valley, CA, 92276"
+
+- name: "Joshua Tree Victims Services Center"
+  phones:
+    - "7603665740"
+  location: "6527 White Feather Road, Joshua Tree, CA 92252"
+
+- name: "San Bernardino County Sheriff's Department (SBCSD)"
+  phones:
+    - "7603664175"
+  location: "6527 White Feather Rd., Joshua Tree, CA 92252"
+
+- name: "Hi- Desert Medical Center (CIV Emergency Room)"
+  phones:
+    - "7603663711"
+  location: "6601 White Feather Rd., Joshua Tree, CA 92252"
