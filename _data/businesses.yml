@@ -1,0 +1,221 @@
+- name: Littleton Hall
+  phones:
+    - 7608304956
+  building_id: 6
+  service_type: chow halls
+  hours:
+    - day: monday
+      times:
+        - open: '06:00'
+          close: '08:00'
+        - open: '10:30'
+          close: '13:00'
+        - open: '16:00'
+          close: '18:00'
+    - day: tuesday
+      times:
+        - open: '06:00'
+          close: '08:00'
+        - open: '10:30'
+          close: '13:00'
+        - open: '16:00'
+          close: '18:00'
+    - day: wednesday
+      times:
+        - open: '06:00'
+          close: '08:00'
+        - open: '10:30'
+          close: '13:00'
+        - open: '16:00'
+          close: '18:00'
+    - day: thursday
+      times:
+        - open: '06:00'
+          close: '08:00'
+        - open: '10:30'
+          close: '13:00'
+        - open: '16:00'
+          close: '18:00'
+    - day: friday
+      times:
+        - open: '06:00'
+          close: '08:00'
+        - open: '10:30'
+          close: '13:00'
+        - open: '16:00'
+          close: '18:00'
+    - day: saturday
+      times:
+        - open: '08:00'
+          close: '09:30'
+        - open: '11:30'
+          close: '13:00'
+        - open: '16:30'
+          close: '18:00'
+    - day: sunday
+      times:
+        - open: '08:00'
+          close: '09:30'
+        - open: '11:30'
+          close: '13:00'
+        - open: '16:30'
+          close: '18:00'
+
+- name: Dunham Hall
+  phones:
+    - 7608304772
+  building_id: 7
+  service_type: chow halls
+  hours:
+    - day: monday
+      times:
+        - open: '06:00'
+          close: '08:00'
+        - open: '11:00'
+          close: '13:00'
+        - open: '16:00'
+          close: '18:00'
+    - day: tuesday
+      times:
+        - open: '06:00'
+          close: '08:00'
+        - open: '11:00'
+          close: '13:00'
+        - open: '16:00'
+          close: '18:00'
+    - day: wednesday
+      times:
+        - open: '06:00'
+          close: '08:00'
+        - open: '11:00'
+          close: '13:00'
+        - open: '16:00'
+          close: '18:00'
+    - day: thursday
+      times:
+        - open: '06:00'
+          close: '08:00'
+        - open: '11:00'
+          close: '13:00'
+        - open: '16:00'
+          close: '18:00'
+    - day: friday
+      times:
+        - open: '06:00'
+          close: '08:00'
+        - open: '11:00'
+          close: '13:00'
+        - open: '16:00'
+          close: '18:00'
+    - day: saturday
+      times:
+        - open: '08:00'
+          close: '09:30'
+        - open: '11:30'
+          close: '13:00'
+        - open: '16:00'
+          close: '18:00'
+    - day: sunday
+      times:
+        - open: '08:00'
+          close: '09:30'
+        - open: '11:30'
+          close: '13:00'
+        - open: '16:00'
+          close: '18:00'
+
+- name: Phelps Hall
+  building_id: 8
+  service_type: chow halls
+  hours:
+    - day: monday
+      times:
+        - open: '06:30'
+          close: '08:00'
+        - open: '11:00'
+          close: '13:00'
+        - open: '16:00'
+          close: '18:00'
+    - day: tuesday
+      times:
+        - open: '06:30'
+          close: '08:00'
+        - open: '11:00'
+          close: '13:00'
+        - open: '16:00'
+          close: '18:00'
+    - day: wednesday
+      times:
+        - open: '06:30'
+          close: '08:00'
+        - open: '11:00'
+          close: '13:00'
+        - open: '16:00'
+          close: '18:00'
+    - day: thursday
+      times:
+        - open: '06:30'
+          close: '08:00'
+        - open: '11:00'
+          close: '13:00'
+        - open: '16:00'
+          close: '18:00'
+    - day: friday
+      times:
+        - open: '06:30'
+          close: '08:00'
+        - open: '11:00'
+          close: '13:00'
+        - open: '16:00'
+          close: '18:00'
+    - day: saturday
+      times:
+        - open: '08:00'
+          close: '09:30'
+        - open: '11:30'
+          close: '13:00'
+        - open: '16:30'
+          close: '18:00'
+    - day: sunday
+      times:
+        - open: '08:00'
+          close: '09:30'
+        - open: '11:30'
+          close: '13:00'
+        - open: '16:30'
+          close: '18:00'
+
+- name: Marine Corps Exchange
+  phones:
+    - 7608306163
+  building_id: 9
+  service_type: stores
+  hours:
+    - day: monday
+      times:
+        - open: '07:00'
+          close: '20:00'
+    - day: tuesday
+      times:
+        - open: '07:00'
+          close: '20:00'
+    - day: wednesday
+      times:
+        - open: '07:00'
+          close: '20:00'
+    - day: thursday
+      times:
+        - open: '07:00'
+          close: '20:00'
+    - day: friday
+      times:
+        - open: '07:00'
+          close: '20:00'
+    - day: saturday
+      times:
+        - open: '10:00'
+          close: '18:00'
+    - day: sunday
+      times:
+        - open: '10:00'
+          close: '18:00'

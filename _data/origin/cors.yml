@@ -60,3 +60,7 @@ polyfill:
 
 mathjax:
   js: https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js
+
+leaflet:
+  css: https://unpkg.com/leaflet@1.9.3/dist/leaflet.css
+  js: https://unpkg.com/leaflet@1.9.3/dist/leaflet.js
