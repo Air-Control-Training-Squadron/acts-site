@@ -18,9 +18,10 @@ layout: page
 <ul class="nav nav-tabs" id="businessTab" role="tablist">
   {% for service_type in service_types %}
   <li class="nav-item" role="presentation">
-    <button class="nav-link {% if forloop.first %}active{% endif %}" id="{{ service_type | slugify }}-tab" data-bs-toggle="tab"
-      data-bs-target="#{{ service_type | slugify }}" type="button" role="tab" aria-controls="{{ service_type | slugify }}"
-      aria-selected="{{ forloop.first | yesno: 'true', 'false' }}">{{ service_type | capitalize }}</button>
+    <button class="nav-link {% if forloop.first %}active{% endif %}" id="{{ service_type | slugify }}-tab"
+      data-bs-toggle="tab" data-bs-target="#{{ service_type | slugify }}" type="button" role="tab"
+      aria-controls="{{ service_type | slugify }}" aria-selected="{{ forloop.first | yesno: 'true', 'false' }}">{{
+      service_type | capitalize }}</button>
   </li>
   {% endfor %}
 </ul>
@@ -89,7 +90,7 @@ layout: page
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
   }).addTo(map);
 
-  fetch('/assets/mapgeo.json')
+  fetch('{{ "/assets/mapgeo.json" | relative_url }}')
     .then(response => response.json())
     .then(data => {
       /* highlight buildings */
