@@ -41,6 +41,7 @@ layout: page
               <a href="#" class="card-link" data-building="{{ business.building_id }}">{{ business.name }}</a>
             </div>
             <div class="card-body p-1">
+              <!-- hourly schedule -->
               <table class="table mx-auto table-striped" style="width: 100%;">
                 <thead>
                   <tr>
@@ -48,19 +49,38 @@ layout: page
                   </tr>
                 </thead>
                 <tbody>
-                  {% for time in business.hours %}
+                  {% for hour in business.hours %}
                   <tr>
-                    <td class="p-1">{{ time.day | capitalize }}</td>
+                    <td class="p-1">{{ hour.day | capitalize }}</td>
                     <td class="p-1">
-                      {% for hour in time.times %}
-                      {{ hour.open }} - {{ hour.close }}
+                      {% if hour.times == "closed" %}
+                      Closed
+                      {% elsif hour.times == "opened" %}
+                      Open 24 hours
+                      {% else %}
+                      {% for time in hour.times %}
+                      {{ time.open }} - {{ time.close }}
                       {% unless forloop.last %}<br>{% endunless %}
                       {% endfor %}
+                      {% endif %}
                     </td>
                   </tr>
                   {% endfor %}
                 </tbody>
               </table>
+
+              <!-- extra information -->
+              <div class="text-center">
+                {% if business.extra_hour %}
+                {{ business.extra_hour }}
+                {% else %}
+                Federal Holiday Hours may vary.
+                {% endif %}
+                <br><br>
+                {% if business.phone %}
+                Phone: <a href="tel:{{ business.phone }}">{{ business.phone | phone_number }}</a>
+                {% endif %}
+              </div>
             </div>
           </div>
         </div>
