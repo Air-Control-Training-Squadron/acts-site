@@ -19,7 +19,7 @@
     "watch": "npx rollup -c --bundleConfigAsCjs -w",
     "test": "npx stylelint _sass/**/*.scss",
     "fixlint": "npm run test -- --fix",
-    "serve": "npm run build && bundle exec jekyll serve",
+    "serve": "bundle exec jekyll serve",
     "deploy": "npm run build && bundle exec jekyll build --config _config.yml,_config_ghpages.yml && gh-pages -d _site"
   },
   "devDependencies": {
