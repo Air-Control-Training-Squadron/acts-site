@@ -301,8 +301,7 @@
       flex-direction: column;
 
       .chow-hall-slot {
-        display: grid;
-        grid-template-columns: 20px 1fr;
+        display: flex;
         border-radius: $base-radius;
 
         &.open {
@@ -323,13 +322,14 @@
 
         .indicator {
           position: relative;
-          width: 5px;
-          height: 100%;
+          flex: 0 0 5px;
           border-radius: $base-radius;
         }
 
         .info {
+          flex: 1;
           position: relative;
+          margin-left: 10px;
 
           h6 {
             margin-top: 0;
