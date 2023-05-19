@@ -18,10 +18,11 @@ layout: page
 <ul class="nav nav-tabs" id="businessTab" role="tablist">
   {% for service_type in service_types %}
   <li class="nav-item" role="presentation">
-    <button class="nav-link {% if forloop.first %}active{% endif %}" id="{{ service_type | slugify }}-tab"
+    <a class="nav-link {% if forloop.first %}active{% endif %}" id="{{ service_type | slugify }}-tab"
       data-bs-toggle="tab" data-bs-target="#{{ service_type | slugify }}" type="button" role="tab"
-      aria-controls="{{ service_type | slugify }}" aria-selected="{{ forloop.first | yesno: 'true', 'false' }}">{{
-      service_type | capitalize }}</button>
+      aria-controls="{{ service_type | slugify }}" aria-selected="{{ forloop.first | yesno: 'true', 'false' }}"
+      href="#{{ service_type | slugify }}">{{
+      service_type | capitalize }}</a>
   </li>
   {% endfor %}
 </ul>
@@ -171,4 +172,14 @@ layout: page
       });
     });
 
+  // Opening the correct tab based on hash
+  $(function () {
+    var hash = window.location.hash;
+    if (hash) {
+      $('.nav-link').removeClass('active');
+      $('.tab-pane').removeClass('active');
+      $(hash + '-tab').addClass('active');
+      $(hash).addClass('active');
+    }
+  });
 </script>

@@ -8,9 +8,11 @@ refactor: false
   .jumbotron.hero {
     --bg-url: url('{{ "/assets/img/mcagcc-aerial.jpg" | relative_url }}');
   }
+
   .chow-widget {
     --bg-url: url('{{ "/assets/img/chow-hall-background.jpg" | relative_url }}');
   }
+
   .events-widget {
     --bg-url: url('{{ "/assets/img/smp-background.jpg" | relative_url }}');
   }
@@ -31,18 +33,20 @@ refactor: false
     <div class="col-lg-8 mb-4">
       <div class="card h-100 widget events-widget">
         <div class="card-body text-center">
-          
+
         </div>
       </div>
     </div>
     <!-- chow widget -->
     <div class="col-lg-4 mb-4">
-      <div class="card h-100 widget chow-widget">
-        <div class="card-body">
-          <h4 class="card-title text-center mt-0">Chow Hall Hours</h4>
-          <div id="chow-hall-hours"></div>
+      <a id="chow-widget-link" href="base-info/#chow-halls">
+        <div class="card h-100 widget chow-widget">
+          <div class="card-body">
+            <h4 class="card-title text-center mt-0">Chow Hall Hours</h4>
+            <div id="chow-hall-hours"></div>
+          </div>
         </div>
-      </div>
+      </a>
     </div>
   </div>
 </div>
