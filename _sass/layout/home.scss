@@ -235,6 +235,8 @@
   width: 100%;
   aspect-ratio: 4 / 1;
   min-height: 200px;
+  border-radius: $base-radius;
+  overflow: hidden;
 
   .container {
     display: flex;
@@ -251,14 +253,13 @@
       background-image: var(--bg-url);
       background-size: cover;
       background-position: center;
-      border-radius: $base-radius $base-radius $base-radius $base-radius;
       filter: grayscale(var(--hero-filter-grayscale)) brightness(var(--hero-filter-brightness)) contrast(var(--hero-filter-contrast));
     }
 
     .hero-text {
       position: relative;
       z-index: 1;
-  
+
       h1 {
         font-weight: 900;
         font-size: clamp(1.5rem, 5vw, 2rem);
@@ -266,7 +267,7 @@
         letter-spacing: .25px;
         font-family: "Source Sans Pro", "Microsoft Yahei", sans-serif;
       }
-  
+
       p {
         font-size: clamp(0.8rem, 2vw, 1rem);
         font-family: "Source Sans Pro", "Microsoft Yahei", sans-serif;
@@ -274,3 +275,73 @@
     }
   }
 }
+
+.card.widget.chow-widget {
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: var(--bg-url);
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(var(--hero-filter-grayscale)) brightness(var(--hero-filter-brightness)) contrast(var(--hero-filter-contrast));
+    opacity: 30%;
+  }
+
+  .card-title {
+    position: relative;
+  }
+
+  #chow-hall-hours {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    .chow-hall-slot {
+      display: grid;
+      grid-template-columns: 20px 1fr;
+      border-radius: $base-radius;
+
+      &.open {
+        background-color: var(--widget-green);
+
+        .indicator {
+          background-color: var(--widget-dark-green);
+        }
+      }
+
+      &.close {
+        background-color: var(--widget-red);
+
+        .indicator {
+          background-color: var(--widget-dark-red);
+        }
+      }
+
+      .indicator {
+        position: relative;
+        width: 5px;
+        height: 100%;
+        border-radius: $base-radius;
+      }
+
+      .info {
+        position: relative;
+
+        h6 {
+          margin-top: 0;
+          margin-bottom: 0;
+          font-weight: bold;
+        }
+
+        p {
+          margin-top: 0;
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
+

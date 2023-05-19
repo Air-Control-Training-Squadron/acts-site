@@ -8,6 +8,9 @@ refactor: false
   .jumbotron.hero {
     --bg-url: url('{{ "/assets/img/mcagcc-aerial.jpg" | relative_url }}')
   }
+  .chow-widget {
+    --bg-url: url('{{ "/assets/img/chow-hall-background.jpg" | relative_url }}')
+  }
 </style>
 
 <div class="jumbotron hero">
@@ -18,3 +21,103 @@ refactor: false
     </div>
   </div>
 </div>
+<br>
+<div class="container p-0">
+  <div class="row">
+    <!-- event widget -->
+    <div class="col-md-8 mb-4">
+      <div class="card h-100 widget events-widget">
+        <div class="card-body text-center">
+          events
+        </div>
+      </div>
+    </div>
+    <!-- chow widget -->
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 widget chow-widget">
+        <div class="card-body">
+          <h4 class="card-title text-center mt-0">Chow Hall Hours</h4>
+          <div id="chow-hall-hours"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script defer>
+  const chowHalls = [
+    //{% for chow_hall in site.data.businesses %}
+    //{% if chow_hall.service_type == "chow halls" %}
+    {
+      name: '{{ chow_hall.name }}',
+      hours: [
+        //{% for hours in chow_hall.hours %}
+        {
+          day: '{{ hours.day }}',
+          times: [
+            //{% for time in hours.times %}
+            {
+              open: '{{ time.open }}',
+              close: '{{ time.close }}'
+            },
+            //{% endfor %}
+          ]
+        },
+        //{% endfor %}
+      ]
+    },
+    //{% endif %}
+    //{% endfor %}
+  ]
+
+  const now = new Date();
+  const dayOfWeek = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"][now.getDay()];
+  const currentTimeInMin = now.getHours() * 60 + now.getMinutes();
+
+  for (const chowHall of chowHalls) {
+    const todayHours = chowHall.hours.find(hours => hours.day === dayOfWeek);
+
+    let nextOpeningHours = null;
+    let isOpen = false;
+    let nextOpeningTime = 0;
+
+    for (const timeSlot of todayHours.times) {
+      const openingTime = timeSlot.open;
+      const closingTime = timeSlot.close;
+
+      const [openingHours, openingMinutes] = openingTime.split(':').map(Number);
+      const openingTimeInMin = openingHours * 60 + openingMinutes;
+
+      const [closingHours, closingMinutes] = closingTime.split(':').map(Number);
+      const closingTimeInMin = closingHours * 60 + closingMinutes
+
+      if (currentTimeInMin <= closingTimeInMin) {
+        nextOpeningHours = { open: openingTime, close: closingTime };
+        isOpen = (currentTimeInMin >= openingTimeInMin);
+
+        if (isOpen) {
+          nextOpeningTime = closingTimeInMin - currentTimeInMin;
+        } else {
+          nextOpeningTime = openingTimeInMin - currentTimeInMin;
+        }
+
+        break;
+      }
+    }
+
+    const nextOpeningHour = Math.floor(nextOpeningTime / 60);
+    const nextOpeningMinute = nextOpeningTime % 60;
+    const nextOpeningTimeString = `${nextOpeningHour > 0 ? (nextOpeningHour + ' hr') : ''} ${nextOpeningMinute} min`;
+
+    $('#chow-hall-hours').append($('<div>')
+      .addClass(`chow-hall-slot p-2 mb-1 ${isOpen ? 'open' : 'close'}`)
+      .append($('<div>')
+        .addClass('indicator'))
+      .append($('<div>')
+        .addClass('info')
+        .append($('<h6>')
+          .text(chowHall.name))
+        .append($('<p>')
+          .text(nextOpeningHours ? `${nextOpeningHours.open} - ${nextOpeningHours.close} (${isOpen ? 'Closes' : 'Opens'} in ${nextOpeningTimeString})` : 'Closed for the day'))));
+  }
+</script>

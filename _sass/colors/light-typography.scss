@@ -107,8 +107,14 @@
   --timeline-node-bg: #c2c6cc;
   --timeline-year-dot-color: #ffffff;
 
-  /* hero */
+  /* Hero */
   --hero-filter-grayscale: 90%;
   --hero-filter-brightness: 150%;
   --hero-filter-contrast: 60%;
+
+   /* Widgets */
+   --widget-red: rgba(214, 46, 46, 0.1);
+   --widget-dark-red: rgb(208, 70, 70);
+   --widget-green: rgba(29, 222, 93, 0.1);
+   --widget-dark-green: rgb(76, 214, 122);
 } /* light-scheme */

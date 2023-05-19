@@ -149,8 +149,15 @@
     color-scheme: none;
   }
 
-  /* hero */
+  /* Hero */
   --hero-filter-grayscale: 95%;
   --hero-filter-brightness: 50%;
   --hero-filter-contrast: 120%;
+
+  /* Widgets */
+  --widget-red: rgba(214, 46, 46, 0.1);
+  --widget-dark-red: rgb(99, 21, 21);
+  --widget-green: rgba(29, 222, 93, 0.1);
+  --widget-dark-green: rgb(18, 91, 42);
+
 } /* dark-scheme */
