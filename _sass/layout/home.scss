@@ -81,7 +81,7 @@
           color: inherit;
         }
 
-        > div:first-child {
+        >div:first-child {
           display: block;
           white-space: nowrap;
           overflow: hidden;
@@ -90,7 +90,9 @@
       }
     }
   }
-} /* #post-list */
+}
+
+/* #post-list */
 
 .pagination {
   color: var(--btn-patinator-text-color);
@@ -139,8 +141,12 @@
     &:last-child .page-link {
       border-radius: 50%;
     }
-  } /* .page-item */
-} /* .pagination */
+  }
+
+  /* .page-item */
+}
+
+/* .pagination */
 
 /* Tablet */
 @media all and (min-width: 768px) {
@@ -212,7 +218,9 @@
     .page-index {
       display: none;
     }
-  } /* .pagination */
+  }
+
+  /* .pagination */
 }
 
 /* Panel is visible */
@@ -222,17 +230,19 @@
   }
 }
 
-.hero {
+.jumbotron.hero {
   position: relative;
   width: 100%;
   aspect-ratio: 4 / 1;
   min-height: 200px;
 
-  .hero-image {
-    position: relative;
-    width: 100%;
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     height: 100%;
-    overflow: hidden;
+    text-align: center;
 
     &::before {
       content: "";
@@ -244,19 +254,23 @@
       border-radius: $base-radius $base-radius $base-radius $base-radius;
       filter: grayscale(var(--hero-filter-grayscale)) brightness(var(--hero-filter-brightness)) contrast(var(--hero-filter-contrast));
     }
-  }
 
-  .hero-text {
-    h1 {
-      font-weight: 900;
-      font-size: clamp(1.5rem, 5vw, 2rem);
-      line-height: 1.2;
-      letter-spacing: .25px;
-      font-family: "Source Sans Pro","Microsoft Yahei",sans-serif;
-    }
-    p {
-      font-size: clamp(0.8rem, 2vw, 1rem);
-      font-family: "Source Sans Pro","Microsoft Yahei",sans-serif;
+    .hero-text {
+      position: relative;
+      z-index: 1;
+  
+      h1 {
+        font-weight: 900;
+        font-size: clamp(1.5rem, 5vw, 2rem);
+        line-height: 1.2;
+        letter-spacing: .25px;
+        font-family: "Source Sans Pro", "Microsoft Yahei", sans-serif;
+      }
+  
+      p {
+        font-size: clamp(0.8rem, 2vw, 1rem);
+        font-family: "Source Sans Pro", "Microsoft Yahei", sans-serif;
+      }
     }
   }
 }
