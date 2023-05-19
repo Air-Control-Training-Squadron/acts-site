@@ -31,7 +31,7 @@ layout: page
   <div class="tab-pane fade show {% if forloop.first %}active{% endif %}" id="{{ service_type | slugify }}"
     role="tabpanel" aria-labelledby="{{ service_type | slugify }}-tab">
     <!-- card grid -->
-    <div class="container">
+    <div class="container p-0">
       <div class="row">
         {% for business in site.data.businesses %}
         {% if business.service_type == service_type %}
@@ -79,6 +79,10 @@ layout: page
                 <br><br>
                 {% if business.phone %}
                 Phone: <a href="tel:{{ business.phone }}">{{ business.phone | phone_number }}</a>
+                <br>
+                {% endif %}
+                {% if business.website %}
+                Website: <a href="{{ business.website }}" target='_blank' rel='noreferrer noopener'>Link</a>
                 {% endif %}
               </div>
             </div>

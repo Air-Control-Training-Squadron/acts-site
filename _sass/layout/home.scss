@@ -276,7 +276,7 @@
   }
 }
 
-.card.widget.chow-widget {
+.card.widget {
   overflow: hidden;
 
   &::before {
@@ -287,61 +287,62 @@
     background-size: cover;
     background-position: center;
     filter: grayscale(var(--hero-filter-grayscale)) brightness(var(--hero-filter-brightness)) contrast(var(--hero-filter-contrast));
-    opacity: 30%;
+    opacity: 0.3;
   }
 
-  .card-title {
-    position: relative;
-  }
+  &.chow-widget {
+    .card-title {
+      position: relative;
+    }
 
-  #chow-hall-hours {
-    position: relative;
-    display: flex;
-    flex-direction: column;
+    #chow-hall-hours {
+      position: relative;
+      display: flex;
+      flex-direction: column;
 
-    .chow-hall-slot {
-      display: grid;
-      grid-template-columns: 20px 1fr;
-      border-radius: $base-radius;
-
-      &.open {
-        background-color: var(--widget-green);
-
-        .indicator {
-          background-color: var(--widget-dark-green);
-        }
-      }
-
-      &.close {
-        background-color: var(--widget-red);
-
-        .indicator {
-          background-color: var(--widget-dark-red);
-        }
-      }
-
-      .indicator {
-        position: relative;
-        width: 5px;
-        height: 100%;
+      .chow-hall-slot {
+        display: grid;
+        grid-template-columns: 20px 1fr;
         border-radius: $base-radius;
-      }
 
-      .info {
-        position: relative;
+        &.open {
+          background-color: var(--widget-green);
 
-        h6 {
-          margin-top: 0;
-          margin-bottom: 0;
-          font-weight: bold;
+          .indicator {
+            background-color: var(--widget-dark-green);
+          }
         }
 
-        p {
-          margin-top: 0;
-          margin-bottom: 0;
+        &.close {
+          background-color: var(--widget-red);
+
+          .indicator {
+            background-color: var(--widget-dark-red);
+          }
+        }
+
+        .indicator {
+          position: relative;
+          width: 5px;
+          height: 100%;
+          border-radius: $base-radius;
+        }
+
+        .info {
+          position: relative;
+
+          h6 {
+            margin-top: 0;
+            margin-bottom: 0;
+            font-weight: bold;
+          }
+
+          p {
+            margin-top: 0;
+            margin-bottom: 0;
+          }
         }
       }
     }
   }
 }
-

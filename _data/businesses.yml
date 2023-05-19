@@ -322,6 +322,7 @@
 
 - name: Adult Medical Care Clinic (AMCC)
   phone: 7608302621
+  website: https://twentynine-palms.tricare.mil/Health-Services/Readiness
   building_id: 12
   service_type: medical
   hours:
@@ -353,6 +354,7 @@
 
 - name: Robert E Bush Naval Hospital
   phone: 7608302190
+  website: https://twentynine-palms.tricare.mil/About-Us
   building_id: 14
   service_type: medical
   hours:

@@ -6,10 +6,13 @@ refactor: false
 <!-- workaround for baseurl shenanigans -->
 <style>
   .jumbotron.hero {
-    --bg-url: url('{{ "/assets/img/mcagcc-aerial.jpg" | relative_url }}')
+    --bg-url: url('{{ "/assets/img/mcagcc-aerial.jpg" | relative_url }}');
   }
   .chow-widget {
-    --bg-url: url('{{ "/assets/img/chow-hall-background.jpg" | relative_url }}')
+    --bg-url: url('{{ "/assets/img/chow-hall-background.jpg" | relative_url }}');
+  }
+  .events-widget {
+    --bg-url: url('{{ "/assets/img/smp-background.jpg" | relative_url }}');
   }
 </style>
 
@@ -28,7 +31,7 @@ refactor: false
     <div class="col-md-8 mb-4">
       <div class="card h-100 widget events-widget">
         <div class="card-body text-center">
-          events
+          
         </div>
       </div>
     </div>
