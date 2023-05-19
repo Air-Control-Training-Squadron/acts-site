@@ -3,6 +3,8 @@ icon: fas fa-info-circle
 order: 4
 ---
 
+Mission Statement: To provide entry-level, skill progression, and skill enhancement training in the operation and employment of the Marine Air Command and Control System, maintenance of ground electronics equipment, and advanced Explosive Ordnance Disposal operations in order to enable the warfighting functions of the Marine Air-Ground Task Force.
+
 ## ACTS History
 
 ### Beginnings
