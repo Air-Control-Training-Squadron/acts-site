@@ -1,5 +1,5 @@
 ---
 layout: base-info
-icon: fas fa-stream
+icon: fas fa-map
 order: 1
 ---
