@@ -1,6 +1,6 @@
 ---
 icon: fas fa-info-circle
-order: 4
+order: 5
 ---
 
 Mission Statement: To provide entry-level, skill progression, and skill enhancement training in the operation and employment of the Marine Air Command and Control System, maintenance of ground electronics equipment, and advanced Explosive Ordnance Disposal operations in order to enable the warfighting functions of the Marine Air-Ground Task Force.
@@ -107,6 +107,7 @@ The AN/TPS-59A(V)3 Skill Progression Course is a skill progression course that p
 
 ##### 5900 Common Course (59CC, MOS 59XX) [CID: M091J31]
 The 5900 Common Course is a feeder course that teaches students the basic concepts of electronics, cable repair, grounding, basic radio communications and information technology. It prepares the entry-level student for follow-on training in 5900 MOS schools. This course provides basic instruction in the following areas:
+
 -Basic electronics
 -Cable repair
 -Grounding

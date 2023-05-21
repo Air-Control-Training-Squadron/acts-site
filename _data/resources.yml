@@ -1,0 +1,17 @@
+- name: "SqdnO 1050.2A"
+  category: policies
+  icon: "far fa-file-pdf"
+  description: "Describes the liberty policies for the squadron"
+  link: "/assets/pdf/pdf-sample.pdf"
+
+- name: "MCO 1020.34H"
+  category: policies
+  icon: "far fa-file-pdf"
+  description: "stuff"
+  link: "/assets/pdf/pdf-sample.pdf"
+
+- name: "Maintenance Request Form (Bldg 1666)"
+  category: forms
+  icon: "fas fa-link"
+  description: "stuff"
+  link: "https://docs.google.com/forms/d/e/1FAIpQLSeQJDx8HNxjj0NTJ7bxWos8WHywAskFcY-cYnFqIItZ2l6koQ/viewform?usp=sf_link"

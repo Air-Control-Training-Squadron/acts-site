@@ -1651,3 +1651,19 @@ $btn-mb: 0.5rem;
 tr td {
   border: 1px solid var(--card-bg);
 }
+
+.accordion {
+  --bs-accordion-color: var(--text-color);
+  --bs-accordion-bg: var(--card-bg);
+  --bs-accordion-border-color: var(--btn-border-color);
+  --bs-accordion-btn-color: var(--text-color);
+  --bs-accordion-active-color: var(--text-muted-color);
+  --bs-accordion-active-bg: var(--card-hover-bg);
+  --bs-accordion-btn-icon: var(--accordion-btn-icon);
+  --bs-accordion-btn-active-icon: var(--accordion-btn-active-icon);
+
+  .accordion-header {
+    margin-top: 0!important;
+    margin-bottom: 0!important;
+  }
+}

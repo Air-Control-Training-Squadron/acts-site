@@ -1,5 +1,5 @@
 ---
 layout: contacts
 icon: fas fa-address-book
-order: 3
+order: 4
 ---

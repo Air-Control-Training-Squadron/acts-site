@@ -89,3 +89,12 @@ categories:
   post_measure:
     singular: post
     plural: posts
+
+# resources page
+resources:
+  categories:
+    policies: Squadron and Base Orders
+    training: Education and Training
+    offbase: Events and Off-base
+    forms: Templates and Forms
+  cta: View Link
