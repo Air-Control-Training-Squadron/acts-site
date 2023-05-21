@@ -15,7 +15,13 @@ layout: page
       {% for contact in site.data.contacts %}
       <tr>
         <td>
+          {% if contact.service_type == 'support' %}
+          <i class="fas fa-headset"></i>
+          {% elsif contact.service_type == 'police' %}
           <i class="fas fa-shield-halved"></i>
+          {% elsif contact.service_type == 'medical' %}
+          <i class="fas fa-heart-pulse"></i>
+          {% endif %}
           {{ contact.name }}
         </td>
         <td>{{ contact.location }}</td>
