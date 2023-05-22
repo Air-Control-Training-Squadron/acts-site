@@ -6,36 +6,28 @@ layout: page
 
 <h2>Business schedules</h2>
 
-<!-- identifies unique service types -->
-{% assign service_types = "" | split: "," %}
-
-{% for business in site.data.businesses %}
-{% unless service_types contains business.service_type %}
-{% assign service_types = service_types | push: business.service_type %}
-{% endunless %}
-{% endfor %}
+{% assign services = site.data.businesses | group_by:"service_type" %}
 
 <ul class="nav nav-tabs" id="businessTab" role="tablist">
-  {% for service_type in service_types %}
+  {% for service in services %}
   <li class="nav-item" role="presentation">
-    <a class="nav-link {% if forloop.first %}active{% endif %}" id="{{ service_type | slugify }}-tab"
-      data-bs-toggle="tab" data-bs-target="#{{ service_type | slugify }}" type="button" role="tab"
-      aria-controls="{{ service_type | slugify }}" aria-selected="{{ forloop.first | yesno: 'true', 'false' }}"
-      href="#{{ service_type | slugify }}">{{
-      service_type | capitalize }}</a>
+    <a class="nav-link {% if forloop.first %}active{% endif %}" id="{{ service.name | slugify }}-tab"
+      data-bs-toggle="tab" data-bs-target="#{{ service.name | slugify }}" type="button" role="tab"
+      aria-controls="{{ service.name | slugify }}" aria-selected="{{ forloop.first | yesno: 'true', 'false' }}"
+      href="#{{ service.name | slugify }}">{{
+      service.name | capitalize }}</a>
   </li>
   {% endfor %}
 </ul>
 
 <div class="tab-content pt-4" id="businessTabContent">
-  {% for service_type in service_types %}
-  <div class="tab-pane fade show {% if forloop.first %}active{% endif %}" id="{{ service_type | slugify }}"
-    role="tabpanel" aria-labelledby="{{ service_type | slugify }}-tab">
+  {% for service in services %}
+  <div class="tab-pane fade show {% if forloop.first %}active{% endif %}" id="{{ service.name | slugify }}"
+    role="tabpanel" aria-labelledby="{{ service.name | slugify }}-tab">
     <!-- card grid -->
     <div class="container p-0">
       <div class="row">
-        {% for business in site.data.businesses %}
-        {% if business.service_type == service_type %}
+        {% for business in service.items %}
         <div class="col-12 col-lg-4 mb-4">
           <div class="card">
             <div class="card-header text-center">
@@ -89,7 +81,6 @@ layout: page
             </div>
           </div>
         </div>
-        {% endif %}
         {% endfor %}
       </div>
     </div>

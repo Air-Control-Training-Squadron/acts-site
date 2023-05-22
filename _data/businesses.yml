@@ -183,6 +183,107 @@
         - open: '16:30'
           close: '18:00'
 
+- name: West Gym
+  phone: 7608306451
+  website: https://29palms.usmc-mccs.org/recreation-fitness/fitness/fitness-centers/west-gym
+  building_id: 18
+  service_type: gyms
+  hours:
+    - day: monday
+      times:
+        - open: '04:30'
+          close: '20:30'
+    - day: tuesday
+      times:
+        - open: '04:30'
+          close: '20:30'
+    - day: wednesday
+      times:
+        - open: '04:30'
+          close: '20:30'
+    - day: thursday
+      times:
+        - open: '04:30'
+          close: '20:30'
+    - day: friday
+      times:
+        - open: '04:30'
+          close: '20:30'
+    - day: saturday
+      times: closed
+    - day: sunday
+      times: closed
+
+- name: Wilburn Gym
+  phone: 7608304070
+  website: https://29palms.usmc-mccs.org/recreation-fitness/fitness/fitness-centers/wilburn-gym
+  building_id: 19
+  service_type: gyms
+  hours:
+    - day: monday
+      times:
+        - open: '04:30'
+          close: '23:00'
+    - day: tuesday
+      times:
+        - open: '04:30'
+          close: '23:00'
+    - day: wednesday
+      times:
+        - open: '04:30'
+          close: '23:00'
+    - day: thursday
+      times:
+        - open: '04:30'
+          close: '23:00'
+    - day: friday
+      times:
+        - open: '04:30'
+          close: '23:00'
+    - day: saturday
+      times:
+        - open: '06:00'
+          close: '18:00'
+    - day: sunday
+      times:
+        - open: '06:00'
+          close: '18:00'
+
+- name: East Gym
+  phone: 7608306440
+  website: https://29palms.usmc-mccs.org/recreation-fitness/fitness/fitness-centers/east-gym
+  building_id: 20
+  service_type: gyms
+  hours:
+    - day: monday
+      times:
+        - open: '04:30'
+          close: '20:30'
+    - day: tuesday
+      times:
+        - open: '04:30'
+          close: '20:30'
+    - day: wednesday
+      times:
+        - open: '04:30'
+          close: '20:30'
+    - day: thursday
+      times:
+        - open: '04:30'
+          close: '20:30'
+    - day: friday
+      times:
+        - open: '04:30'
+          close: '20:30'
+    - day: saturday
+      times:
+        - open: '08:00'
+          close: '16:00'
+    - day: sunday
+      times:
+        - open: '08:00'
+          close: '16:00'
+
 - name: Marine Corps Exchange
   phone: 7608306163
   building_id: 9
@@ -433,3 +534,63 @@
       times: closed
     - day: sunday
       times: closed
+
+- name: MCAGCC Visitor Center
+  phone: 7608306794
+  building_id: 23
+  service_type: offices
+  hours:
+    - day: monday
+      times:
+        - open: '05:00'
+          close: '21:00'
+    - day: tuesday
+      times:
+        - open: '05:00'
+          close: '21:00'
+    - day: wednesday
+      times:
+        - open: '05:00'
+          close: '21:00'
+    - day: thursday
+      times:
+        - open: '05:00'
+          close: '21:00'
+    - day: friday
+      times:
+        - open: '05:00'
+          close: '21:00'
+    - day: saturday
+      times: closed
+    - day: sunday
+      times: closed
+
+- name: Catholic Chapel
+  phone: 7608306464
+  building_id: 21
+  service_type: religion
+  hours:
+    - day: monday
+      times:
+        - open: '11:30'
+          close: '17:00'
+    - day: tuesday
+      times:
+        - open: '11:30'
+          close: '17:00'
+    - day: wednesday
+      times:
+        - open: '11:30'
+          close: '17:00'
+    - day: thursday
+      times:
+        - open: '11:30'
+          close: '17:00'
+    - day: friday
+      times: closed
+    - day: saturday
+      times: closed
+    - day: sunday
+      times:
+        - open: '09:00'
+          close: '17:00'

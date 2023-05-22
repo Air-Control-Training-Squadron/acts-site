@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Legal information
+title: Legal
 permalink: /legal/
 ---
 
