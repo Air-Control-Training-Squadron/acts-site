@@ -14,7 +14,7 @@ layout: page
         {{ site.data.locales[site.lang].resources.categories[category.name] }}
       </button>
     </h2>
-    <div id="collapse{{ category.name | slugify }}" class="accordion-collapse collapse" aria-labelledby="headingOne"
+    <div id="collapse{{ category.name | slugify }}" class="accordion-collapse collapse" aria-labelledby="heading{{ category.name | slugify }}"
       data-bs-parent="#resources">
       <div class="accordion-body container">
         <div class="row">
