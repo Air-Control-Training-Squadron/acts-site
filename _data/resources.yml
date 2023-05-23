@@ -1,17 +1,95 @@
 - name: "SqdnO 1050.2A"
-  category: policies
-  file_type: "pdf"
-  description: "Describes the liberty and leave policies for the squadron"
+  category: squadron
+  file_type: pdf
+  description: "ACTS' leave and liberty policies for students and permanent personnel."
   link: "/assets/pdf/SqdnO 1050.2A LEAVE AND LIBERTY ORDER.pdf"
 
 - name: "GruO 1 MCCES"
-  category: policies
-  file_type: "pdf"
-  description: "MCCES ELT student rules"
+  category: squadron
+  file_type: pdf
+  description: "Rules on student behavior. Covers forbidden language, forbidden substances, barracks visitation rules, romantic contact rules, and more."
   link: "/assets/pdf/GruO 1 MCCES.pdf"
+
+- name: "Off Limit Establishments"
+  category: squadron
+  file_type: pdf
+  description: "Defines the off limit establishments when going off-base."
+  link: "https://www.29palms.marines.mil/LinkClick.aspx?fileticket=wzQgyoMetTU%3D&tabid=30413&portalid=56"
+
+- name: "ACTS Map"
+  category: squadron
+  file_type: img
+  description: "Official map of ACTS."
+  link: "/assets/img/ACTS Map.png"
+
+- name: "MCCES Map"
+  category: squadron
+  file_type: img
+  description: "Official map of MCCES."
+  link: "/assets/img/MCCES Campus Map.png"
+
+- name: "Marine Online (MOL)"
+  category: training
+  file_type: link
+  description: "Official USMC digital platform for Marines to access services for their professional career development."
+  link: "https://mol.tfs.usmc.mil/mol/UserHomeEntry.do"
+
+- name: "MarineNet"
+  category: training
+  file_type: link
+  description: "Official USMC e-learning system for training and education purposes."
+  link: "https://portal.marinenet.usmc.mil/content/mnet-portal/en.html"
+
+- name: "Joint Knowledge Online (JKO)"
+  category: training
+  file_type: link
+  description: "Comprehensive source for joint training and continuing education for all DoD personnel."
+  link: "https://jkodirect.jten.mil/Atlas2/page/login/Login.jsf"
+
+- name: "SOS Rides"
+  category: travel
+  file_type: link
+  description: "Safe, reliable, and free transportation services for military personnel."
+  link: "https://sosride.org/schedule-ride/"
+
+- name: "Palm Springs AMTRAK"
+  category: travel
+  file_type: link
+  description: "Provides convenient railway transportation systems."
+  link: "https://www.amtrak.com/stations/psn"
+
+- name: "Palm Springs Airport"
+  category: travel
+  file_type: link
+  description: "Closest commercial airport to MCAGCC. Offers domestic flights."
+  link: "https://palmspringsairport.com/"
+
+- name: "Defense Travel System (DTS)"
+  category: travel
+  file_type: link
+  description: "Automates travel authorization, reservations, approvals, and travel orders for DoD personnel."
+  link: "https://dtsproweb.defensetravel.osd.mil/dts-app/pubsite/all/view/"
+
+- name: "TRICARE"
+  category: support
+  file_type: link
+  description: "The health care program serving military personnel and their family."
+  link: "https://tricare.mil/"
+
+- name: "Armed Services YMCA"
+  category: support
+  file_type: link
+  description: "Nonprofit organization committed to strengthening military families through hands-on programming."
+  link: "https://29palms.asymca.org/?hsLang=en"
+
+- name: "myPay"
+  category: support
+  file_type: link
+  description: "Online tool for managing pay information, making pay changes, and reviewing pay statements and tax information."
+  link: "https://mypay.dfas.mil/#/"
 
 - name: "Maintenance Request Form (Bldg 1666)"
   category: forms
-  file_type: "link"
-  description: "stuff"
+  file_type: link
+  description: "The maintenance request form for BEQ 1666."
   link: "https://docs.google.com/forms/d/e/1FAIpQLSeQJDx8HNxjj0NTJ7bxWos8WHywAskFcY-cYnFqIItZ2l6koQ/viewform?usp=sf_link"

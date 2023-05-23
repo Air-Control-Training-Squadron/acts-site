@@ -93,8 +93,9 @@ categories:
 # resources page
 resources:
   categories:
-    policies: Squadron and Base Orders
+    squadron: Squadron Info
     training: Education and Training
-    offbase: Events and Off-base
+    travel: Events and Travel
+    support: Support
     forms: Templates and Forms
   cta: View Link
