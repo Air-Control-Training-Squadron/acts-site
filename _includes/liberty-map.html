@@ -12,12 +12,12 @@
 			<div class="accordion-body container">
 				<div id="map"></div>
 				<br>
-				<form>
+				<form onsubmit="event.preventDefault(); addressToLatLng();">
 					<div class="form-group">
 						<label for="address">Address</label>
 						<input type="text" class="form-control" id="address" placeholder="Enter full address" autocomplete="off">
 					</div>
-					<button onclick="event.preventDefault(); addressToLatLng()" type="button"
+					<button onclick="event.preventDefault(); addressToLatLng();" type="button"
 						class="btn btn-secondary btn-block mt-2 w-100">Check Distance</button>
 					<blockquote id="distanceDisplay" class="prompt-info mt-2 mb-0" style="display: none;">Distance: </blockquote>
 				</form>
@@ -93,6 +93,7 @@
 	}
 
 	let marker;
+	let line;
 	function addressToLatLng() {
 		const address = $('#address').val();
 		fetch('https://nominatim.openstreetmap.org/search?format=json&q=' + address)
@@ -105,9 +106,17 @@
 					if (marker) {
 						map.removeLayer(marker);
 					}
+					if (line) {
+						map.removeLayer(line)
+					}
 					marker = L.marker(latLng).addTo(map);
-					map.panTo(latLng, {
-						animate: true
+					line = L.polyline([gatePoint, latLng], {
+						color: 'black',
+						dashArray: '10,10'
+					}).addTo(map);
+					map.flyToBounds([gatePoint, latLng], {
+						animate: true,
+						duration: 0.25
 					});
 
 					const dist = Math.ceil(gatePoint.distanceTo(latLng) / 1609);
