@@ -3,35 +3,37 @@ layout: page
 ---
 
 <div class="container">
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Location</th>
-        <th>Phone</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for contact in site.data.contacts %}
-      <tr>
-        <td>
-          {% if contact.service_type == 'support' %}
-          <i class="fas fa-headset"></i>
-          {% elsif contact.service_type == 'police' %}
-          <i class="fas fa-shield-halved"></i>
-          {% elsif contact.service_type == 'medical' %}
-          <i class="fas fa-heart-pulse"></i>
-          {% endif %}
-          {{ contact.name }}
-        </td>
-        <td>{{ contact.location }}</td>
-        <td>
-          {% for phone in contact.phones %}
-          <a href="tel:{{ phone }}">{{ phone | phone_number }}</a><br>
-          {% endfor %}
-        </td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
+  <div class="table-wrapper">
+    <table style="width: 100%">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Location</th>
+          <th>Phone</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for contact in site.data.contacts %}
+          <tr>
+            <td>
+              {% if contact.service_type == 'support' %}
+                <i class="fas fa-headset"></i>
+              {% elsif contact.service_type == 'police' %}
+                <i class="fas fa-shield-halved"></i>
+              {% elsif contact.service_type == 'medical' %}
+                <i class="fas fa-heart-pulse"></i>
+              {% endif %}
+              {{ contact.name }}
+            </td>
+            <td>{{ contact.location }}</td>
+            <td>
+              {% for phone in contact.phones %}
+                <a href="tel:{{ phone }}">{{ phone | phone_number }}</a><br>
+              {% endfor %}
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
 </div>

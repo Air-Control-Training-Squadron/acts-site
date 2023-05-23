@@ -1669,14 +1669,8 @@ $btn-mb: 0.5rem;
   }
 }
 
-.table {
-  --bs-table-striped-color: var(--text-color);
-  --bs-table-color: var(--text-color);
-  --bs-border-color: transparent;
-}
-
 tr td {
-  border: 1px solid var(--card-bg);
+  border: 2px solid var(--card-bg);
 }
 
 .accordion {
