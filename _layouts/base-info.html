@@ -4,7 +4,7 @@ layout: page
 
 <div id="map"></div>
 
-<h2>Business schedules</h2>
+<h2>Business Schedules</h2>
 
 {% assign services = site.data.businesses | group_by:"service_type" %}
 
@@ -15,7 +15,7 @@ layout: page
       data-bs-toggle="tab" data-bs-target="#{{ service.name | slugify }}" type="button" role="tab"
       aria-controls="{{ service.name | slugify }}" aria-selected="{{ forloop.first | yesno: 'true', 'false' }}"
       href="#{{ service.name | slugify }}">{{
-      service.name | capitalize }}</a>
+      service.name | titlecase }}</a>
   </li>
   {% endfor %}
 </ul>
