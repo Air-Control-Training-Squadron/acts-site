@@ -1,147 +1,207 @@
 <div class="accordion" id="accordionMap">
-	<div class="accordion-item">
-		<h2 class="accordion-header" id="headingMap">
-			<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMap"
-				aria-expanded="false" aria-controls="collapseMap">
-				Liberty Limits Map
-			</button>
-		</h2>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingMap">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapseMap"
+        aria-expanded="false"
+        aria-controls="collapseMap">
+        Liberty Limits Map
+      </button>
+    </h2>
 
-		<div id="collapseMap" class="accordion-collapse collapse" aria-labelledby="headingMap"
-			data-bs-parent="#accordionMap">
-			<div class="accordion-body container">
-				<div id="map"></div>
-				<br>
-				<form onsubmit="event.preventDefault(); addressToLatLng();">
-					<div class="form-group">
-						<label for="address">Address</label>
-						<input type="text" class="form-control" id="address" placeholder="Enter full address" autocomplete="off">
-					</div>
-					<button onclick="event.preventDefault(); addressToLatLng();" type="button"
-						class="btn btn-secondary btn-block mt-2 w-100">Check Distance</button>
-					<blockquote id="distanceDisplay" class="prompt-info mt-2 mb-0" style="display: none;">Distance: </blockquote>
-				</form>
-			</div>
-		</div>
-	</div>
+    <div
+      id="collapseMap"
+      class="accordion-collapse collapse"
+      aria-labelledby="headingMap"
+      data-bs-parent="#accordionMap">
+      <div class="accordion-body container">
+        <div id="map"></div>
+        <br>
+        <form onsubmit="event.preventDefault(); addressToLatLng();">
+          <div class="form-group">
+            <label for="address">Address</label>
+            <input
+              type="text"
+              class="form-control"
+              id="address"
+              placeholder="Enter full address"
+              autocomplete="off">
+          </div>
+          <button
+            onclick="event.preventDefault(); addressToLatLng();"
+            type="button"
+            class="btn btn-secondary btn-block mt-2 w-100">Check Distance</button>
+          <div
+            id="spinnerDisplay"
+            class="justify-content-center align-items-center mt-2"
+            style="height: 30px; display: none;">
+            <i class="fas fa-spinner fa-2xl fa-spin"></i>
+          </div>
+          <blockquote
+            id="distanceDisplay"
+            class="prompt-info mt-2 mb-0"
+            style="display: none;">Distance:
+          </blockquote>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
 
-<script>
-
-</script>
-
 <!-- Map code -->
-<script src="{{ site.data.origin.cors.leaflet.js }}" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
-	crossorigin=""></script>
+<script
+  src="{{ site.data.origin.cors.leaflet.js }}"
+  integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+  crossorigin=""></script>
 
-<script defer>
-	const gatePoint = L.latLng(34.20911, -116.05383);
-	let map;
-	// Size of map behaves erratically on a hidden div
-	// This creates and resets the size of the map whenever the accordion is opened
-	$('#collapseMap').on('shown.bs.collapse', function () {
-		if (!map) {
-			initMap();
-		} else {
-			map.invalidateSize();
-		}
-	});
+<script>
+  const gatePoint = L.latLng(34.20911, -116.05383);
 
-	function initMap() {
-		map = L.map('map', {
-			attributionControl: false
-		}).setView(gatePoint, 5);
+  let map;
 
-		L.control.attribution({
-			prefix: false
-		}).addTo(map);
+  // Size of map behaves erratically on a hidden div
+  // This creates and resets the size of the map whenever the accordion is opened
+  $('#collapseMap').on('shown.bs.collapse', function() {
+    if (! map) {
+      initMap();
+    } else {
+      map.invalidateSize();
+    }
+  });
 
-		L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-			maxZoom: 19,
-			attribution: '&copy;<a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-		}).addTo(map);
+  function initMap() {
+    map = L.map('map', {attributionControl: false}).setView(gatePoint, 5);
 
-		L.circle(gatePoint, {
-			color: 'green',
-			fillColor: 'green',
-			fillOpacity: 0.1,
-			radius: 1609.34 * 500
-		}).addTo(map);
-		L.circle(gatePoint, {
-			color: 'orange',
-			fillColor: 'orange',
-			fillOpacity: 0.1,
-			radius: 1609.34 * 350
-		}).addTo(map);
-		L.circle(gatePoint, {
-			color: 'red',
-			fillColor: 'red',
-			fillOpacity: 0.1,
-			radius: 1609.34 * 100
-		}).addTo(map);
-		L.circle(gatePoint, {
-			color: 'blue',
-			fillColor: 'blue',
-			fillOpacity: 0.1,
-			radius: 1609.34 * 30
-		}).addTo(map);
-	}
+    L.control.attribution({prefix: false}).addTo(map);
 
-	function prependClass(element, className) {
-		const currentClassValue = $(element).attr('class') || '';
-    $(element).attr('class', className + ' ' + currentClassValue);
-	}
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy;<a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
 
-	let marker;
-	let line;
-	function addressToLatLng() {
-		const address = $('#address').val();
-		fetch('https://nominatim.openstreetmap.org/search?format=json&q=' + address)
-			.then(response => response.json())
-			.then(data => {
-				$('#distanceDisplay').show();
+    L.circle(gatePoint, {
+      color: 'green',
+      fillColor: 'green',
+      fillOpacity: 0.1,
+      radius: 1609.34 * 500
+    }).addTo(map);
+    L.circle(gatePoint, {
+      color: 'orange',
+      fillColor: 'orange',
+      fillOpacity: 0.1,
+      radius: 1609.34 * 350
+    }).addTo(map);
+    L.circle(gatePoint, {
+      color: 'red',
+      fillColor: 'red',
+      fillOpacity: 0.1,
+      radius: 1609.34 * 100
+    }).addTo(map);
+    L.circle(gatePoint, {
+      color: 'blue',
+      fillColor: 'blue',
+      fillOpacity: 0.1,
+      radius: 1609.34 * 30
+    }).addTo(map);
+  }
 
-				if (data.length > 0) {
-					var latLng = L.latLng(data[0].lat, data[0].lon);
-					if (marker) {
-						map.removeLayer(marker);
-					}
-					if (line) {
-						map.removeLayer(line)
-					}
-					marker = L.marker(latLng).addTo(map);
-					line = L.polyline([gatePoint, latLng], {
-						color: 'black',
-						dashArray: '10,10'
-					}).addTo(map);
-					map.flyToBounds([gatePoint, latLng], {
-						animate: true,
-						duration: 0.25
-					});
+  function prependClass(element, newClass) {
+    const currentClassValue = $(element).attr('class') || '';
+    $(element).attr('class', newClass + ' ' + currentClassValue);
+  }
 
-					const dist = Math.ceil(gatePoint.distanceTo(latLng) / 1609);
-					let libBoundRange;
+  function setPromptClass(element, newClass) {
+    const promptElement = $(element);
+    const classes = promptElement.attr('class').split(' ');
 
-					if (dist <= 30) {
-						libBoundRange = "workday"
-					} else if (dist <= 100) {
-						libBoundRange = "48 hour"
-					} else if (dist <= 350) {
-						libBoundRange = "72 hour"
-					} else if (dist <= 500) {
-						libBoundRange = "96 hour"
-					}
+    $.each(classes, function(index, className) {
+      if (className.startsWith('prompt-')) {
+        promptElement.removeClass(className);
+      }
+    });
+		
+    prependClass(promptElement, newClass);
+    return promptElement;
+  }
 
-					$('#distanceDisplay')
-						.removeClass('prompt-danger')
-						.html(`Distance: ${dist} miles.<br>Within ${libBoundRange} limits.`);
-					prependClass('#distanceDisplay', 'prompt-info');
-				} else {
-					$('#distanceDisplay')
-						.removeClass('prompt-info')
-						.text('Address not found.');
-					prependClass('#distanceDisplay', 'prompt-danger');
-				}
-			});
-	}
+  let marker;
+  let line;
+  function addressToLatLng() {
+    $('#spinnerDisplay').addClass('d-flex');
+    $('#distanceDisplay').hide();
+    const address = $('#address').val();
+
+    fetch('https://nominatim.openstreetmap.org/search?format=json&q=' + address)
+      .then(response => response.json())
+      .then(data => {
+        if (data.length == 0) {
+          setPromptClass('#distanceDisplay', 'prompt-danger').text('Address not found.');
+          return;
+        }
+
+        const destPoint = L.latLng(data[0].lat, data[0].lon);
+
+        // Display visual stuff on map
+        if (marker) {
+          map.removeLayer(marker);
+        }
+        if (line) {
+          map.removeLayer(line);
+        }
+        marker = L.marker(destPoint).addTo(map);
+        line = L.polyline([
+          gatePoint, destPoint
+        ], {
+          color: 'black',
+          dashArray: '10,10'
+        }).addTo(map);
+        map.flyToBounds([
+          gatePoint, destPoint
+        ], {
+          animate: true,
+          duration: 0.25
+        });
+
+        // Calculate distance
+        const dist = Math.ceil(gatePoint.distanceTo(destPoint) / 1609);
+
+				if (dist > 500) {
+          setPromptClass('#distanceDisplay', 'prompt-danger').html(`Distance: ${dist} miles.<br>Out of bounds.`);
+          return;
+        }
+
+        // Check if location is in Mexico
+        const locationArray = data[0].display_name.split(',');
+        const country = locationArray[locationArray.length - 1].trim();
+
+        if (country === 'Mexico') {
+          setPromptClass('#distanceDisplay', 'prompt-danger').html(`Distance: ${dist} miles.<br>Location is in Mexico.`);
+          return;
+        }
+
+        // Otherwise display liberty bound range
+        let libBoundRange;
+        if (dist <= 30) {
+          libBoundRange = "workday";
+        } else if (dist <= 100) {
+          libBoundRange = "48 hour";
+        } else if (dist <= 350) {
+          libBoundRange = "72 hour";
+        } else if (dist <= 500) {
+          libBoundRange = "96 hour";
+        }
+
+        setPromptClass('#distanceDisplay', 'prompt-info').html(`Distance: ${dist} miles.<br>Within ${libBoundRange} limits.`);
+      })
+      .catch(error => {
+        setPromptClass('#distanceDisplay').addClass('prompt-danger').text(`Error: "${error}"`);
+      })
+      . finally(() => {
+        $('#spinnerDisplay').removeClass('d-flex');
+        $('#distanceDisplay').show();
+      });
+  }
 </script>

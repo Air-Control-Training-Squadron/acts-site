@@ -4,7 +4,8 @@ order: 2
 ---
 
 {% assign order = site.data.resources | where: "name", "SqdnO 1050.2A" | first %}
-> This is a brief summary of <a href="{{ order.link }}" target="_blank">SqdnO 1050.2A</a> and is meant to serve as a quick reference guide only. It is not intended to replace the official squadron order or to serve as a legal document. Its purpose is to help Marines understand some of the key points in a simplified and condensed format. It does not cover all the rules, regulations, procedures, and protocols specified in the full squadron order. As such, it may not fully detail your responsibilities or the penalties for non-compliance. For complete details, always refer to the original squadron order and official documents. Marines are responsible for fully understanding and complying with all aspects of the official squadron order. Any misunderstandings or misinterpretations from this quick reference guide are not an excuse for violating the policy.
+{% assign offlimit = site.data.resources | where: "name", "Off Limit Establishments" | first %}
+> This is a brief summary of <a href="{{ order.link }}" target="_blank">SqdnO 1050.2A</a> and <a href="{{ offlimit.link }}" target="_blank">Off Limit Establishments</a> and is meant to serve as a quick reference guide only. It is not intended to replace the official squadron order or to serve as a legal document. Its purpose is to help Marines understand some of the key points in a simplified and condensed format. It does not cover all the rules, regulations, procedures, and protocols specified in the full squadron order. As such, it may not fully detail your responsibilities or the penalties for non-compliance. For complete details, always refer to the original squadron order and official documents. Marines are responsible for fully understanding and complying with all aspects of the official squadron order. Any misunderstandings or misinterpretations from this quick reference guide are not an excuse for violating the policy.
 {: .prompt-warning}
 > The following information applies only to ELT students. Permanent personnel should refer to the squadron order for their respective bounds.
 {: .prompt-tip}
@@ -35,7 +36,31 @@ Liberty limits are measured from the front gates of MCAGCC. Any proposed excepti
 | **72 hours** | 350 miles |
 | **96 hours** | 500 miles |
 
-You may also use the below tool to check if your destination is within geographical limits.
+In addition to those geographical limits, **Mexico and the following establishments are off-limits**.
+
+| Name | Address | City |
+| ---- | ------- | ---- |
+| Smokey's Houka Shop | 6441 Adobe Road | Twentynine Palms |
+| The Auto Shoppe | 5972 Adobe Road | Twentynine Palms |
+| STC Smoke Shop | 6001 Adobe Road | Twentynine Palms |
+| Puff's Tobacco Mart | 57063 29 Palms Highway | Yucca Valley |
+| Puff's Tobacco Mart 2 | 57602 29 Palms Highway | Yucca Valley |
+| NYPD Pizza | 260-262 North Palm Canyon Drive | Palm Springs |
+| Sam's Smoke Shop | 16520 West Main Street | Barstow |
+| Teazer's Bar & Grill Nightclub | 14269 Seventh Street | Victorville|
+| Angelo's Kars | 222 & 226 S. Coast Highway | Oceanside |
+| Denny's Parking Lot | 692 E Street | Chula Vista |
+| Burger King & McDonald's | 28th Street (Parking Lots) | San Diego |
+| Club Mustang | 2200 University Avenue | San Diego |
+| Club San Diego | 3955 4th Avenue | San Diego |
+| Get It On Shoppe | | San Diego |
+| Main Street Motel | 3494 Main Street | San Diego |
+| Trolley Stations | Palomar Street & San Ysidro | San Diego |
+| Vulcan Baths | 805 W. Cedar Street | San Diego |
+| Dream Crystal | 1536 Highland Avenue | National City |
+| Sports Auto Sales | 1111 National City Boulevard | National City |
+
+You may use the below tool to check if your destination is within geographical limits.
 
 {% include liberty-map.html %}
 
@@ -47,7 +72,7 @@ Exceptions can be made for SMP trips, command liberty trips, MCCS activities, or
 ## Liberty logbook and accountability
 
 For on-base liberty, there is no need for a Marine to sign a logbook. Otherwise, to ensure accountability, all enlisted ELT Marines must sign out the liberty logbook located at the front desk of the barracks.
-ELT Marines are to be accounted for by their designated student leader. This accountability should be reported to the Squadron Duty Officer (SDO) 15 minutes after liberty concludes daily. However, Phase III Marines with overnight liberty are exempt on Fridays, Saturdays, and holidays, as long as they've signed out in the off-base liberty logbook.
+ELT Marines are to be accounted for by their designated student leader. This accountability should be reported to the Squadron Duty Officer (SDO) no later than 15 minutes after liberty concludes daily. However, Phase III Marines with overnight liberty are exempt on Fridays, Saturdays, and holidays, as long as they've signed out in the off-base liberty logbook.
 
 ## Liberty buddy
 
