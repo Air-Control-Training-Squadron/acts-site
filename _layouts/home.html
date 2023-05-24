@@ -33,7 +33,17 @@ refactor: false
     <div class="col-lg-8 mb-4">
       <div class="card h-100 widget contacts-widget">
         <div class="card-body text-center">
-
+          <h4 class="card-title text-center mt-0">Emergency Numbers</h4>
+          <div id="emergency-numbers" class="d-flex flex-column justify-content-between">
+            <div class="emergency-contact">
+              <div class="emergency-type">Squadron Duty Officer (SDO)</div>
+              <div class="emergency-number"><a href="tel:7609543040">(760) 954-3040</a></div>
+            </div>
+            <div class="emergency-contact">
+              <div class="emergency-type">Emergency Dispatch</div>
+              <div class="emergency-number"><a href="tel:7608303333">(760) 830-3333</a></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -52,36 +62,35 @@ refactor: false
 </div>
 
 {% assign chow_halls = site.data.businesses | where: "service_type", "chow halls" %}
-<script defer>
+<script>
   /* TODO: Better way of converting liquid to javascript */
-  const chowHalls = [
-    {% for chow_hall in chow_halls %}
-    {
-      name: '{{ chow_hall.name }}',
-      hours: [
-        {% for hours in chow_hall.hours %}
-        {
-          day: '{{ hours.day }}',
-          times: [
-            {% for time in hours.times %}
+  const chowHalls = [{% for chow_hall in chow_halls %}
+      {
+        name: '{{ chow_hall.name }}',
+        hours: [{% for hours in chow_hall.hours %}
             {
-              open: '{{ time.open }}',
-              close: '{{ time.close }}'
+              day: '{{ hours.day }}',
+              times: [{% for time in hours.times %}
+                  {
+                    open: '{{ time.open }}',
+                    close: '{{ time.close }}'
+                  }
+                    {% unless forloop.last %},{% endunless %}{% endfor %}]
             }
-            {% unless forloop.last %},{% endunless %}
-            {% endfor %}
-          ]
-        }
-        {% unless forloop.last %},{% endunless %}
-        {% endfor %}
-      ]
-    }
-    {% unless forloop.last %},{% endunless %}
-    {% endfor %}
-  ];
+            {% unless forloop.last %},{% endunless %}{% endfor %}]
+      }
+      {% unless forloop.last %},{% endunless %}{% endfor %}];
 
   const now = new Date();
-  const dayOfWeek = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"][now.getDay()];
+  const dayOfWeek = [
+    "sunday",
+    "monday",
+    "tuesday",
+    "wednesday",
+    "thursday",
+    "friday",
+    "saturday"
+  ][now.getDay()];
   const currentTimeInMin = now.getHours() * 60 + now.getMinutes();
 
   for (const chowHall of chowHalls) {
@@ -89,7 +98,7 @@ refactor: false
 
     let nextOpeningHours = null;
     let isOpen = false;
-    let nextOpeningTime = 0;
+    let nextOpeningTime = null;
 
     for (const timeSlot of todayHours.times) {
       const openingTime = timeSlot.open;
@@ -102,7 +111,11 @@ refactor: false
       const closingTimeInMin = closingHours * 60 + closingMinutes;
 
       if (currentTimeInMin <= closingTimeInMin) {
-        nextOpeningHours = { open: openingTime, close: closingTime };
+        nextOpeningHours = {
+          open: openingTime,
+          close: closingTime
+        };
+        
         isOpen = (currentTimeInMin >= openingTimeInMin);
 
         if (isOpen) {
@@ -118,6 +131,9 @@ refactor: false
     const nextOpeningHour = Math.floor(nextOpeningTime / 60);
     const nextOpeningMinute = nextOpeningTime % 60;
     const nextOpeningTimeString = `${nextOpeningHour > 0 ? (nextOpeningHour + ' hr') : ''} ${nextOpeningMinute} min`;
+    const text = (nextOpeningTime !== null && nextOpeningTime > 0)
+      ? `${nextOpeningHours.open} - ${nextOpeningHours.close} (${isOpen ? 'Closes' : 'Opens'} in ${nextOpeningTimeString})`
+      : 'Closed for the day';
 
     $('#chow-hall-hours').append($('<div>')
       .addClass(`chow-hall-slot p-2 mb-1 ${isOpen ? 'open' : 'close'}`)
@@ -128,6 +144,6 @@ refactor: false
         .append($('<h6>')
           .text(chowHall.name))
         .append($('<p>')
-          .text(nextOpeningHours ? `${nextOpeningHours.open} - ${nextOpeningHours.close} (${isOpen ? 'Closes' : 'Opens'} in ${nextOpeningTimeString})` : 'Closed for the day'))));
+          .text(text))));
   }
 </script>

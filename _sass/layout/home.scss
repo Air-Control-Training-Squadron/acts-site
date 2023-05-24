@@ -291,11 +291,31 @@ a#chow-widget-link {
     opacity: 0.3;
   }
 
-  &.chow-widget {
-    .card-title {
-      position: relative;
-    }
+  .card-title {
+    position: relative;
+  }
 
+  &.contacts-widget {
+    #emergency-numbers {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+
+      .emergency-contact {
+        .emergency-type {
+          font-size: 1.2em;
+          font-weight: 600;
+        }
+  
+        .emergency-number {
+          font-size: 1em;
+          font-weight: 400;
+        }
+      }
+    }
+  }
+
+  &.chow-widget {
     #chow-hall-hours {
       position: relative;
       display: flex;
