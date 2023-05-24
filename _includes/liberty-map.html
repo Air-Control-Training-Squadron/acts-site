@@ -29,6 +29,10 @@
               id="address"
               placeholder="Enter full address"
               autocomplete="off">
+            <small class="form-text text-muted">
+              By entering an address, you agree to our
+              <a href="/legal/#user-data-policy">user data policy</a>.
+            </small>
           </div>
           <button
             onclick="event.preventDefault(); addressToLatLng();"
@@ -58,6 +62,7 @@
   let map;
 
   /* Size of map behaves erratically on a hidden div */
+
   /* This creates and resets the size of the map whenever the accordion is opened */
   $('#collapseMap').on('shown.bs.collapse', function() {
     if (! map) {
@@ -117,7 +122,7 @@
         promptElement.removeClass(className);
       }
     });
-		
+
     prependClass(promptElement, newClass);
     return promptElement;
   }
@@ -163,7 +168,7 @@
         /* Calculate distance */
         const dist = Math.ceil(gatePoint.distanceTo(destPoint) / 1609);
 
-				if (dist > 500) {
+        if (dist > 500) {
           setPromptClass('#distanceDisplay', 'prompt-danger').html(`Distance: ${dist} miles.<br>Out of bounds.`);
           return;
         }
