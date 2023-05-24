@@ -31,7 +31,10 @@ layout: page
 
 <div class="tab-content pt-4" id="businessTabContent">
   {% for service in services %}
-    <div class="tab-pane fade show {% if forloop.first %}active{% endif %}"id="{{ service.name | slugify }}"role="tabpanel"aria-labelledby="{{ service.name | slugify }}-tab">
+    <div class="tab-pane fade show {% if forloop.first %}active{% endif %}"
+      id="{{ service.name | slugify }}"
+      role="tabpanel"
+      aria-labelledby="{{ service.name | slugify }}-tab">
       <!-- card grid -->
       <div class="container p-0">
         <div class="row">
