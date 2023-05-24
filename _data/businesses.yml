@@ -187,7 +187,7 @@
   phone: 7608306451
   website: https://29palms.usmc-mccs.org/recreation-fitness/fitness/fitness-centers/west-gym
   building_id: 18
-  service_type: gyms
+  service_type: fitness
   hours:
     - day: monday
       times:
@@ -218,7 +218,7 @@
   phone: 7608304070
   website: https://29palms.usmc-mccs.org/recreation-fitness/fitness/fitness-centers/wilburn-gym
   building_id: 19
-  service_type: gyms
+  service_type: fitness
   hours:
     - day: monday
       times:
@@ -253,7 +253,7 @@
   phone: 7608306440
   website: https://29palms.usmc-mccs.org/recreation-fitness/fitness/fitness-centers/east-gym
   building_id: 20
-  service_type: gyms
+  service_type: fitness
   hours:
     - day: monday
       times:
@@ -283,6 +283,85 @@
       times:
         - open: '08:00'
           close: '16:00'
+
+- name: Training Tank
+  phone: 7608306212
+  website: https://29palms.usmc-mccs.org/recreation-fitness/aquatics/aquatic-centers
+  building_id: 24
+  service_type: fitness
+  hours:
+    - day: monday
+      times:
+        - open: '05:00'
+          close: '18:00'
+    - day: tuesday
+      times:
+        - open: '05:00'
+          close: '18:00'
+    - day: wednesday
+      times:
+        - open: '05:00'
+          close: '18:00'
+    - day: thursday
+      times:
+        - open: '05:00'
+          close: '18:00'
+    - day: friday
+      times:
+        - open: '05:00'
+          close: '18:00'
+    - day: saturday
+      times:
+        - open: '11:00'
+          close: '18:00'
+    - day: sunday
+      times:
+        - open: '11:00'
+          close: '16:00'
+
+- name: Hill Top Pool
+  phone: 7608307250
+  building_id: 34
+  service_type: fitness
+  hours:
+    - day: monday
+      times:
+        - open: '11:00'
+          close: '13:00'
+        - open: '16:00'
+          close: '18:00'
+    - day: tuesday
+      times:
+        - open: '11:00'
+          close: '13:00'
+        - open: '16:00'
+          close: '18:00'
+    - day: wednesday
+      times:
+        - open: '11:00'
+          close: '13:00'
+        - open: '16:00'
+          close: '18:00'
+    - day: thursday
+      times:
+        - open: '11:00'
+          close: '13:00'
+        - open: '16:00'
+          close: '18:00'
+    - day: friday
+      times:
+        - open: '11:00'
+          close: '13:00'
+        - open: '16:00'
+          close: '18:00'
+    - day: saturday
+      times:
+        - open: '11:00'
+          close: '17:00'
+    - day: sunday
+      times:
+        - open: '11:00'
+          close: '15:00'       
 
 - name: Marine Corps Exchange
   phone: 7608306163
@@ -564,6 +643,25 @@
       times: closed
     - day: sunday
       times: closed
+
+- name: MCCES HQ
+  building_id: 33
+  service_type: offices
+  hours:
+    - day: monday
+      times: opened
+    - day: tuesday
+      times: opened
+    - day: wednesday
+      times: opened
+    - day: thursday
+      times: opened
+    - day: friday
+      times: opened
+    - day: saturday
+      times: opened
+    - day: sunday
+      times: opened
 
 - name: Catholic Chapel
   phone: 7608306464
