@@ -28,6 +28,12 @@
   description: "Official map of MCCES."
   link: "/assets/img/MCCES_Campus_Map.png"
 
+- name: MCAGCC Website
+  category: squadron
+  file_type: link
+  description: "Offical website of MCAGCC"
+  link: "https://www.29palms.marines.mil/"
+
 - name: "Marine Online (MOL)"
   category: training
   file_type: link
