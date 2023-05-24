@@ -2,8 +2,11 @@
 layout: page
 ---
 
-<div class="container">
-  <div class="table-wrapper">
+{% assign contacts = site.data.contacts | group_by: "category" %}
+
+{% for contactsGroup in contacts %}
+  <h3>{{ site.data.locales[site.lang].contacts.categories[contactsGroup.name] }}</h3>
+  <div class="table-wrapper" id="contacts-table">
     <table style="width: 100%">
       <thead>
         <tr>
@@ -13,7 +16,7 @@ layout: page
         </tr>
       </thead>
       <tbody>
-        {% for contact in site.data.contacts %}
+        {% for contact in contactsGroup.items %}
           <tr>
             <td>
               {% if contact.service_type == 'support' %}
@@ -22,6 +25,8 @@ layout: page
                 <i class="fas fa-shield-halved"></i>
               {% elsif contact.service_type == 'medical' %}
                 <i class="fas fa-heart-pulse"></i>
+              {% elsif contact.service_type == 'fire' %}
+                <i class="fas fa-fire"></i>
               {% endif %}
               {{ contact.name }}
             </td>
@@ -36,4 +41,4 @@ layout: page
       </tbody>
     </table>
   </div>
-</div>
+{% endfor %}

@@ -99,3 +99,12 @@ resources:
     support: Support
     forms: Templates and Forms
   cta: View Link
+
+# contacts page
+contacts:
+  categories:
+    sapr: SAPR
+    emergency: Emergency
+    counseling: Counseling
+    misc: Miscellaneous
+    off_base: Off-Base
