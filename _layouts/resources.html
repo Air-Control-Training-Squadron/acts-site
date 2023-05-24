@@ -1,0 +1,51 @@
+---
+layout: page
+---
+
+{% assign resources = site.data.resources | group_by:"category" %}
+
+<div class="accordion" id="resources">
+  {% for category in resources %}
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="heading{{ category.name | slugify }}">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+        data-bs-target="#collapse{{ category.name | slugify }}" aria-expanded="false"
+        aria-controls="collapse{{ category.name | slugify }}">
+        {{ site.data.locales[site.lang].resources.categories[category.name] }}
+      </button>
+    </h2>
+    <div id="collapse{{ category.name | slugify }}" class="accordion-collapse collapse"
+      aria-labelledby="heading{{ category.name | slugify }}" data-bs-parent="#resources">
+      <div class="accordion-body container">
+        <div class="row">
+          {% for item in category.items %}
+          <div class="col-12">
+            <a href="{{ item.link | relative_url }}" target="_blank">
+              <div class="card mb-2">
+                <div class="card-body">
+                  <h5 class="card-title mt-0">
+                    {% if item.file_type == 'pdf' %}
+                    <i class="far fa-file-pdf"></i>
+                    {% elsif item.file_type == 'img' %}
+                    <i class="fas fa-image"></i>
+                    {% elsif item.file_type == 'link' %}
+                    <i class="fas fa-link"></i>
+                    {% endif %}
+                    <b> {{ item.name }}</b>
+                  </h5>
+                  <div class="d-flex justify-content-between align-items-end">
+                    <p class="card-text mb-0">{{ item.description }}</p>
+                    <span class="resource-cta btn btn-outline-primary">{{ site.data.locales[site.lang].resources.cta
+                      }}</span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>

@@ -89,3 +89,13 @@ categories:
   post_measure:
     singular: post
     plural: posts
+
+# resources page
+resources:
+  categories:
+    squadron: Squadron Info
+    training: Education and Training
+    travel: Events and Travel
+    support: Support
+    forms: Templates and Forms
+  cta: View Link

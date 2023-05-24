@@ -95,6 +95,9 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{ site.data.origin[type].fontawesome.css | relative_url }}">
 
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="{{ site.data.origin[type].leaflet.css | relative_url }}">
+
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 
   {% if site.toc and page.toc %}
@@ -107,6 +110,8 @@
   {% endif %}
 
   <!-- JavaScript -->
+
+  <script src="{{ site.data.origin.cors.jquery.js }}"></script>
 
   {% unless site.theme_mode %}
     {% include mode-toggle.html %}

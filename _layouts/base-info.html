@@ -1,0 +1,198 @@
+---
+layout: page
+---
+
+<div id="map"></div>
+
+<h2>Business Schedules</h2>
+
+{% assign services = site.data.businesses | group_by: "service_type" %}
+
+<ul
+  class="nav nav-tabs"
+  id="businessTab"
+  role="tablist">
+  {% for service in services %}
+    <li class="nav-item" role="presentation">
+      <a
+        class="nav-link {% if forloop.first %}active{% endif %}"
+        id="{{ service.name | slugify }}-tab"
+        data-bs-toggle="tab"
+        data-bs-target="#{{ service.name | slugify }}"
+        type="button"
+        role="tab"
+        aria-controls="{{ service.name | slugify }}"
+        aria-selected="{{ forloop.first | yesno: 'true', 'false' }}"
+        href="#{{ service.name | slugify }}">{{
+   service.name | titlecase }}</a>
+    </li>
+  {% endfor %}
+</ul>
+
+<div class="tab-content pt-4" id="businessTabContent">
+  {% for service in services %}
+    <div class="tab-pane fade show {% if forloop.first %}active{% endif %}"
+      id="{{ service.name | slugify }}"
+      role="tabpanel"
+      aria-labelledby="{{ service.name | slugify }}-tab">
+      <!-- card grid -->
+      <div class="container p-0">
+        <div class="row">
+          {% for business in service.items %}
+            <div class="col-12 col-lg-4 mb-4">
+              <div class="card">
+                <div class="card-header text-center">
+                  <a
+                    href="#"
+                    class="card-link"
+                    data-building="{{ business.building_id }}">{{ business.name }}</a>
+                </div>
+                <div class="card-body p-1">
+                  <!-- hourly schedule -->
+                  <div class="table-wrapper">
+                    <table style="width: 100%;">
+                      <thead>
+                        <tr>
+                          <td colspan="2" class="text-center">Hours</td>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for hour in business.hours %}
+                          <tr>
+                            <td class="p-1">{{ hour.day | capitalize }}</td>
+                            <td class="p-1">
+                              {% if hour.times == "closed" %}
+                                Closed
+                              {% elsif hour.times == "opened" %}
+                                Open 24 hours
+                              {% else %}
+                                {% for time in hour.times %}
+                                  {{ time.open }} - {{ time.close }}
+                                  {% unless forloop.last %}<br>{% endunless %}
+                                {% endfor %}
+                              {% endif %}
+                            </td>
+                          </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <!-- extra information -->
+                  <div class="text-center">
+                    {% if business.extra_hour %}
+                      {{ business.extra_hour }}
+                    {% else %}
+                      Federal Holiday Hours may vary.
+                    {% endif %}
+                    <br><br>
+                    {% if business.phone %}
+                      Phone:
+                      <a href="tel:{{ business.phone }}">{{ business.phone | phone_number }}</a>
+                      <br>
+                    {% endif %}
+                    {% if business.website %}
+                      Website:
+                      <a
+                        href="{{ business.website }}"
+                        target='_blank'
+                        rel='noreferrer noopener'>Link</a>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+<!-- Map code -->
+<script
+  src="{{ site.data.origin.cors.leaflet.js }}"
+  integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+  crossorigin=""></script>
+
+<script defer>
+  var map = L.map('map', {
+  attributionControl: false
+    }).setView([34.2392, -116.0587], 17);
+  
+    L.control.attribution({
+      prefix: false
+    }).addTo(map);
+  
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy;<a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  }).addTo(map);
+  
+    fetch('{{ "/assets/mapgeo.json" | relative_url }}')
+  .then(response => response.json())
+      .then(data => {
+        /* highlight buildings */
+        L.geoJSON(data, {
+          style: function (feature) {
+            switch (feature.properties.buildingType) {
+              case "classroom":
+                return { color: "#0588fa" }
+              case "barracks":
+                return { color: "#4bf218" }
+              case "amenity":
+                return { color: "#faf205" }
+              case "office":
+                return { color: "#4992d1" }
+              case "medical":
+                return { color: "#ff0000" }
+              case "chowhall":
+                return { color: "#fa9511" }
+            }
+          },
+          onEachFeature: function (feature, layer) {
+            layer.bindPopup(feature.properties.buildingName || feature.properties.buildingNum)
+          }
+        }).addTo(map);
+  
+        /* create clickable links which zoom on map */
+        $('.card-header .card-link').click(function (event) {
+          event.preventDefault();
+  
+          $('html, body').animate({
+            scrollTop: $('#map').offset().top - offset
+          }, 100);
+  
+          var buildingId = $(this).data('building');
+  
+          $('#map').get(0).scrollIntoView({ behavior: 'smooth' });
+  
+          var buildingData = data.features.find(function (feature) {
+            return feature.properties.buildingId === buildingId;
+          });
+  
+          if (buildingData) {
+            var buildingCoordinates = buildingData.geometry.coordinates[0];
+            var buildingLatLngs = buildingCoordinates.map(function (coord) {
+              return L.latLng(coord[1], coord[0]);
+            });
+  
+            map.flyToBounds(buildingLatLngs);
+  
+            var mapHeight = $('#map').height();
+            var viewportHeight = $(window).height();
+            var offset = (viewportHeight - mapHeight) / 2;
+          }
+        });
+      });
+  
+    // Opening the correct tab based on hash
+    $(function () {
+      var hash = window.location.hash;
+      if (hash) {
+        $('.nav-link').removeClass('active');
+        $('.tab-pane').removeClass('active');
+        $(hash + '-tab').addClass('active');
+        $(hash).addClass('active');
+      }
+    });</script>

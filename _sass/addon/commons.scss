@@ -255,6 +255,16 @@ i {
 }
 
 #access-lastmod {
+  li {
+    height: 1.8rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    list-style: none;
+  }
+
   a {
     &:hover {
       @extend %link-hover;
@@ -706,12 +716,13 @@ $btn-mb: 0.5rem;
 #sidebar {
   @include pl-pr(0);
 
+  padding-left: env(safe-area-inset-left);
   position: fixed;
   top: 0;
   left: 0;
   height: 100%;
   overflow-y: auto;
-  width: $sidebar-width;
+  width: calc($sidebar-width + env(safe-area-inset-left));
   z-index: 99;
   background: var(--sidebar-bg);
 
@@ -739,7 +750,6 @@ $btn-mb: 0.5rem;
     width: 7rem;
     height: 7rem;
     overflow: hidden;
-    box-shadow: var(--avatar-border-color) 0 0 0 2px;
     transform: translateZ(0); /* fixed the zoom in Safari */
 
     img {
@@ -1103,6 +1113,10 @@ $btn-mb: 0.5rem;
       @extend %no-bottom-border;
     }
   }
+
+  @at-root .row:only-child > #{&} {
+    padding-bottom: 3rem;
+  }
 }
 
 #mask {
@@ -1303,7 +1317,7 @@ $btn-mb: 0.5rem;
 
     #main-wrapper,
     footer {
-      transform: translateX(#{$sidebar-width});
+      transform: translateX(calc(#{$sidebar-width} + env(safe-area-inset-left)));
     }
 
     #back-to-top {
@@ -1314,8 +1328,8 @@ $btn-mb: 0.5rem;
   #sidebar {
     @include slide;
 
-    transform: translateX(-#{$sidebar-width}); /* hide */
-    -webkit-transform: translateX(-#{$sidebar-width});
+    transform: translateX(calc(-#{$sidebar-width} - env(safe-area-inset-left))); /* hide */
+    -webkit-transform: translateX(calc(-#{$sidebar-width} - env(safe-area-inset-left)));
   }
 
   #main-wrapper {
@@ -1387,7 +1401,7 @@ $btn-mb: 0.5rem;
 
   #main-wrapper,
   footer {
-    margin-left: $sidebar-width;
+    margin-left: calc($sidebar-width + env(safe-area-inset-left));
   }
 
   #main-wrapper {
@@ -1526,7 +1540,7 @@ $btn-mb: 0.5rem;
 
 @media all and (min-width: 1400px) {
   #back-to-top {
-    right: calc((100vw - #{$sidebar-width} - 1140px) / 2 + 3rem);
+    right: calc((100vw - #{$sidebar-width} - env(safe-area-inset-left) - 1140px) / 2 + 3rem);
   }
 }
 
@@ -1535,11 +1549,11 @@ $btn-mb: 0.5rem;
 
   #main-wrapper,
   footer {
-    margin-left: $sidebar-width-large;
+    margin-left: calc($sidebar-width-large + env(safe-area-inset-left));
   }
 
   #topbar-wrapper {
-    left: $sidebar-width-large;
+    left: calc($sidebar-width-large + env(safe-area-inset-left));
   }
 
   #search-wrapper {
@@ -1562,12 +1576,12 @@ $btn-mb: 0.5rem;
 
   #back-to-top {
     right: calc(
-      (100vw - #{$sidebar-width-large} - #{$main-content-max-width}) / 2 + 2rem
+      (100vw - #{$sidebar-width-large} - env(safe-area-inset-left) - #{$main-content-max-width}) / 2 + 2rem
     );
   }
 
   #sidebar {
-    width: $sidebar-width-large;
+    width: calc($sidebar-width-large + env(safe-area-inset-left));
 
     $icon-gap: 1rem; // for the bottom icons
 
@@ -1597,3 +1611,64 @@ $btn-mb: 0.5rem;
     }
   }
 } /* min-width: 1650px */
+
+
+.nav-tabs {
+  --bs-nav-tabs-border-color: var(--btn-border-color);
+
+  .nav-link {
+    color: var(--link-color);
+  }
+
+  .nav-link.active {
+    color: var(--text-color);
+    background-color: var(--main-bg);
+    border-color: var(--btn-border-color) var(--btn-border-color) var(--main-bg);
+  }
+
+  .nav-link:not(.active):hover {
+    border-color: var(--btn-border-color) var(--btn-border-color) var(--btn-border-color);
+  }
+}
+
+.card {
+  background: var(--card-bg);
+
+  --bs-card-border-color: var(--btn-border-color);
+
+  .card-header {
+    color: var(--header-color);
+  }
+}
+
+tr td {
+  border: 2px solid var(--card-bg);
+}
+
+.accordion {
+  --bs-accordion-color: var(--text-color);
+  --bs-accordion-bg: var(--card-bg);
+  --bs-accordion-border-color: var(--btn-border-color);
+  --bs-accordion-btn-color: var(--text-color);
+  --bs-accordion-active-color: var(--text-muted-color);
+  --bs-accordion-active-bg: var(--card-hover-bg);
+  --bs-accordion-btn-icon: var(--accordion-btn-icon);
+  --bs-accordion-btn-active-icon: var(--accordion-btn-active-icon);
+
+  .accordion-header {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+}
+
+form input.form-control {
+  color: var(--text-color);
+  background-color: var(--card-bg);
+  border-color: var(--btn-border-color);
+
+  &:focus {
+    color: var(--text-color);
+    background-color: var(--card-bg);
+    border-color: var(--btn-border-color);
+  }
+}

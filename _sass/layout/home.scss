@@ -77,7 +77,7 @@
           color: inherit;
         }
 
-        > div:first-child {
+        >div:first-child {
           display: block;
           white-space: nowrap;
           overflow: hidden;
@@ -86,7 +86,9 @@
       }
     }
   }
-} /* #post-list */
+}
+
+/* #post-list */
 
 .pagination {
   color: var(--btn-patinator-text-color);
@@ -135,8 +137,12 @@
     &:last-child .page-link {
       border-radius: 50%;
     }
-  } /* .page-item */
-} /* .pagination */
+  }
+
+  /* .page-item */
+}
+
+/* .pagination */
 
 /* Tablet */
 @media all and (min-width: 768px) {
@@ -208,12 +214,136 @@
     .page-index {
       display: none;
     }
-  } /* .pagination */
+  }
+
+  /* .pagination */
 }
 
 /* Panel is visible */
 @media all and (min-width: 1200px) {
   #post-list {
     padding-right: 0.5rem;
+  }
+}
+
+.jumbotron.hero {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 1;
+  min-height: 200px;
+  border-radius: $base-radius;
+  overflow: hidden;
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    text-align: center;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: var(--bg-url);
+      background-size: cover;
+      background-position: center;
+      filter: grayscale(var(--hero-filter-grayscale)) brightness(var(--hero-filter-brightness)) contrast(var(--hero-filter-contrast));
+    }
+
+    .hero-text {
+      position: relative;
+      z-index: 1;
+
+      h1 {
+        font-weight: 900;
+        font-size: clamp(1.5rem, 5vw, 2rem);
+        line-height: 1.2;
+        letter-spacing: .25px;
+        font-family: "Source Sans Pro", "Microsoft Yahei", sans-serif;
+      }
+
+      p {
+        font-size: clamp(0.8rem, 2vw, 1rem);
+        font-family: "Source Sans Pro", "Microsoft Yahei", sans-serif;
+      }
+    }
+  }
+}
+
+a#chow-widget-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.card.widget {
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: var(--bg-url);
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(var(--hero-filter-grayscale)) brightness(var(--hero-filter-brightness)) contrast(var(--hero-filter-contrast));
+    opacity: 0.3;
+  }
+
+  &.chow-widget {
+    .card-title {
+      position: relative;
+    }
+
+    #chow-hall-hours {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+
+      .chow-hall-slot {
+        display: flex;
+        border-radius: $base-radius;
+
+        &.open {
+          background-color: var(--widget-green);
+
+          .indicator {
+            background-color: var(--widget-dark-green);
+          }
+        }
+
+        &.close {
+          background-color: var(--widget-red);
+
+          .indicator {
+            background-color: var(--widget-dark-red);
+          }
+        }
+
+        .indicator {
+          position: relative;
+          flex: 0 0 5px;
+          border-radius: $base-radius;
+        }
+
+        .info {
+          flex: 1;
+          position: relative;
+          margin-left: 10px;
+
+          h6 {
+            margin-top: 0;
+            margin-bottom: 0;
+            font-weight: bold;
+          }
+
+          p {
+            margin-top: 0;
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
   }
 }
