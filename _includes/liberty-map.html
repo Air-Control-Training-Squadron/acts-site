@@ -62,8 +62,8 @@
 
   let map;
 
-  // Size of map behaves erratically on a hidden div
-  // This creates and resets the size of the map whenever the accordion is opened
+  /* Size of map behaves erratically on a hidden div */
+  /* This creates and resets the size of the map whenever the accordion is opened */
   $('#collapseMap').on('shown.bs.collapse', function() {
     if (! map) {
       initMap();
@@ -144,7 +144,7 @@
 
         const destPoint = L.latLng(data[0].lat, data[0].lon);
 
-        // Display visual stuff on map
+        /* Display visual stuff on map */
         if (marker) {
           map.removeLayer(marker);
         }
@@ -165,7 +165,7 @@
           duration: 0.25
         });
 
-        // Calculate distance
+        /* Calculate distance */
         const dist = Math.ceil(gatePoint.distanceTo(destPoint) / 1609);
 
 				if (dist > 500) {
@@ -173,7 +173,7 @@
           return;
         }
 
-        // Check if location is in Mexico
+        /* Check if location is in Mexico */
         const locationArray = data[0].display_name.split(',');
         const country = locationArray[locationArray.length - 1].trim();
 
@@ -182,7 +182,7 @@
           return;
         }
 
-        // Otherwise display liberty bound range
+        /* Otherwise display liberty bound range */
         let libBoundRange;
         if (dist <= 30) {
           libBoundRange = "workday";

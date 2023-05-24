@@ -1,17 +1,17 @@
 {
-  "name": "jekyll-theme-chirpy",
-  "version": "6.0.1",
-  "description": "A minimal, responsive and feature-rich Jekyll theme for technical writing.",
+  "name": "acts-site",
+  "version": "0.0.0",
+  "description": "A website for Air Control Training Squadron",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cotes2020/jekyll-theme-chirpy.git"
+    "url": "git+https://github.com/DaDerpDuck/acts-site.git"
   },
-  "author": "Cotes Chung",
+  "author": "DaDerpDuck",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/cotes2020/jekyll-theme-chirpy/issues"
+    "url": "https://github.com/DaDerpDuck/acts-site/issues"
   },
-  "homepage": "https://github.com/cotes2020/jekyll-theme-chirpy/",
+  "homepage": "https://github.com/DaDerpDuck/acts-site",
   "scripts": {
     "prebuild": "npx rimraf assets/js/dist",
     "build": "cross-env NODE_ENV=production npx rollup -c --bundleConfigAsCjs",
@@ -20,6 +20,7 @@
     "test": "npx stylelint _sass/**/*.scss",
     "fixlint": "npm run test -- --fix",
     "serve": "cross-env JEKYLL_ENV=development bundle exec jekyll serve",
+    "prodserve": "npm run build && cross-env JEKYLL_ENV=production bundle exec jekyll serve",
     "predeploy": "npm run build && cross-env JEKYLL_ENV=production bundle exec jekyll build --config _config.yml,_config_ghpages.yml",
     "deploy": "gh-pages -d _site"
   },

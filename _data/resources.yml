@@ -2,13 +2,13 @@
   category: squadron
   file_type: pdf
   description: "ACTS' leave and liberty policies for students and permanent personnel."
-  link: "/assets/pdf/SqdnO 1050.2A LEAVE AND LIBERTY ORDER.pdf"
+  link: "/assets/pdf/SqdnO_1050.2A_LEAVE_AND_LIBERTY_ORDER.pdf"
 
 - name: "GruO 1 MCCES"
   category: squadron
   file_type: pdf
   description: "Rules on student behavior. Covers forbidden language, forbidden substances, barracks visitation rules, romantic contact rules, and more."
-  link: "/assets/pdf/GruO 1 MCCES.pdf"
+  link: "/assets/pdf/GruO_1_MCCES.pdf"
 
 - name: "Off Limit Establishments"
   category: squadron
@@ -20,13 +20,13 @@
   category: squadron
   file_type: img
   description: "Official map of ACTS."
-  link: "/assets/img/ACTS Map.png"
+  link: "/assets/img/ACTS_Map.png"
 
 - name: "MCCES Map"
   category: squadron
   file_type: img
   description: "Official map of MCCES."
-  link: "/assets/img/MCCES Campus Map.png"
+  link: "/assets/img/MCCES_Campus_Map.png"
 
 - name: "Marine Online (MOL)"
   category: training
