@@ -21,8 +21,7 @@
     "fixlint": "npm run test -- --fix",
     "serve": "cross-env JEKYLL_ENV=development bundle exec jekyll serve",
     "prodserve": "npm run build && cross-env JEKYLL_ENV=production bundle exec jekyll serve",
-    "predeploy": "npm run build && cross-env JEKYLL_ENV=production bundle exec jekyll build --config _config.yml,_config_ghpages.yml",
-    "deploy": "gh-pages -d _site"
+    "predeploy": "npm run build && cross-env JEKYLL_ENV=production bundle exec jekyll build --config _config.yml,_config_ghpages.yml"
   },
   "devDependencies": {
     "@babel/core": "^7.21.3",
