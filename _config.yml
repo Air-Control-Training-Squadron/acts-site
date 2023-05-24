@@ -154,7 +154,11 @@ defaults:
       layout: page
       permalink: /:title/
   - scope:
-      path: assets/img/favicons
+      path: assets/img
+    values:
+      swcache: true
+  - scope:
+      path: assets/pdf
     values:
       swcache: true
   - scope:

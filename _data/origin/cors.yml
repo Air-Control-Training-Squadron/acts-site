@@ -62,5 +62,5 @@ mathjax:
   js: https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js
 
 leaflet:
-  css: https://unpkg.com/leaflet@1.9.3/dist/leaflet.css
-  js: https://unpkg.com/leaflet@1.9.3/dist/leaflet.js
+  css: https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.min.css
+  js: https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.min.js
