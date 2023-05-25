@@ -108,3 +108,9 @@ contacts:
     counseling: Counseling
     misc: Miscellaneous
     off_base: Off-Base
+
+widget:
+  hours:
+    chow-halls: Chow Hall Hours
+    fitness: Gym Hours
+    stores: Store Hours

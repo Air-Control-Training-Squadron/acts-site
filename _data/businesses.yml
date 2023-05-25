@@ -2,6 +2,7 @@
   phone: 7608304956
   building_id: 6
   service_type: chow halls
+  widget: true
   hours:
     - day: monday
       times:
@@ -64,6 +65,7 @@
   phone: 7608304772
   building_id: 7
   service_type: chow halls
+  widget: true
   hours:
     - day: monday
       times:
@@ -125,6 +127,7 @@
 - name: Phelps Hall
   building_id: 8
   service_type: chow halls
+  widget: true
   hours:
     - day: monday
       times:
@@ -188,6 +191,7 @@
   website: https://29palms.usmc-mccs.org/recreation-fitness/fitness/fitness-centers/west-gym
   building_id: 18
   service_type: fitness
+  widget: true
   hours:
     - day: monday
       times:
@@ -219,6 +223,7 @@
   website: https://29palms.usmc-mccs.org/recreation-fitness/fitness/fitness-centers/wilburn-gym
   building_id: 19
   service_type: fitness
+  widget: true
   hours:
     - day: monday
       times:
@@ -254,6 +259,7 @@
   website: https://29palms.usmc-mccs.org/recreation-fitness/fitness/fitness-centers/east-gym
   building_id: 20
   service_type: fitness
+  widget: true
   hours:
     - day: monday
       times:
@@ -367,6 +373,7 @@
   phone: 7608306163
   building_id: 9
   service_type: stores
+  widget: true
   hours:
     - day: monday
       times:
@@ -402,6 +409,7 @@
   website: https://7-day-store.edan.io/
   building_id: 16
   service_type: stores
+  widget: true
   hours:
     - day: monday
       times:
@@ -470,6 +478,7 @@
   website: https://www.commissaries.com/shopping/store-locations/twentynine-palms-mcagcc
   building_id: 15
   service_type: stores
+  widget: true
   hours:
     - day: monday
       times:

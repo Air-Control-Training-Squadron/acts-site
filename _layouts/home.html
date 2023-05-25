@@ -9,7 +9,7 @@ refactor: false
     --bg-url: url('{{ "/assets/img/mcagcc-aerial.jpg" | relative_url }}');
   }
 
-  .chow-widget {
+  .hours-widget {
     --bg-url: url('{{ "/assets/img/chow-hall-background.jpg" | relative_url }}');
   }
 
@@ -30,120 +30,155 @@ refactor: false
 <div class="container p-0">
   <div class="row">
     <!-- emergency contact widget -->
-    <div class="col-lg-8 mb-4">
+    <div class="col-lg-4 mb-4">
       <div class="card h-100 widget contacts-widget">
         <div class="card-body text-center">
           <h4 class="card-title text-center mt-0">Emergency Numbers</h4>
           <div id="emergency-numbers" class="d-flex flex-column justify-content-between">
             <div class="emergency-contact">
               <div class="emergency-type">Squadron Duty Officer (SDO)</div>
-              <div class="emergency-number"><a href="tel:7609543040">(760) 954-3040</a></div>
+              <div class="emergency-number">
+                <a href="tel:7609543040">(760) 954-3040</a>
+              </div>
             </div>
             <div class="emergency-contact">
               <div class="emergency-type">Emergency Dispatch</div>
-              <div class="emergency-number"><a href="tel:7608303333">(760) 830-3333</a></div>
+              <div class="emergency-number">
+                <a href="tel:7608303333">(760) 830-3333</a>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- chow widget -->
-    <div class="col-lg-4 mb-4">
-      <a id="chow-widget-link" href="base-info/#chow-halls">
-        <div class="card h-100 widget chow-widget">
-          <div class="card-body">
-            <h4 class="card-title text-center mt-0">Chow Hall Hours</h4>
-            <div id="chow-hall-hours"></div>
+    <!-- hours widget -->
+    <div class="col-lg-8 mb-4">
+      <div class="card h-100 widget hours-widget">
+        <div class="card-body">
+          <div
+            id="hours-carousel"
+            class="carousel slide"
+            data-ride="carousel">
+
+            <div class="carousel-inner overflow-hidden">
+              {% assign businessGroups = site.data.businesses | where: "widget", "true" | group_by: "service_type" %}
+              {% for businessGroup in businessGroups %}
+                <div class="px-5 carousel-item {% if forloop.first %}active{% endif %}">
+                  {% assign slugifiedName = businessGroup.name | slugify %}
+                  <h4 class="card-title text-center mt-0">{{ site.data.locales[site.lang].widget.hours[slugifiedName] }}</h4>
+                  <div id="{{ businessGroup.name | slugify }}-hours" class="hours-list"></div>
+                </div>
+              {% endfor %}
+            </div>
+
+            <a
+              class="carousel-control-prev justify-content-start"
+              href="#hours-carousel"
+              role="button"
+              data-bs-target="#hours-carousel"
+              data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a
+              class="carousel-control-next justify-content-end"
+              href="#hours-carousel"
+              role="button"
+              data-bs-target="#hours-carousel"
+              data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+
           </div>
         </div>
-      </a>
+      </div>
     </div>
   </div>
 </div>
 
 {% assign chow_halls = site.data.businesses | where: "service_type", "chow halls" %}
 <script>
-  /* TODO: Better way of converting liquid to javascript */
-  const chowHalls = [{% for chow_hall in chow_halls %}
-      {
-        name: '{{ chow_hall.name }}',
-        hours: [{% for hours in chow_hall.hours %}
-            {
-              day: '{{ hours.day }}',
-              times: [{% for time in hours.times %}
-                  {
-                    open: '{{ time.open }}',
-                    close: '{{ time.close }}'
-                  }
-                    {% unless forloop.last %},{% endunless %}{% endfor %}]
+  function slugify(text) {
+    return text
+      .toString()
+      .toLowerCase()
+      .replace(/\s+/g, '-')
+      .replace(/[^\w\-]+/g, '')
+      .replace(/\-\-+/g, '-')
+      .replace(/^-+/, '')
+      .replace(/-+$/, '');
+  }
+
+  fetch('{{ "/assets/js/data/hours.json" | relative_url }}').then(response => response.json()).then(data => {
+    const now = new Date();
+    const dayOfWeek = [
+      "sunday",
+      "monday",
+      "tuesday",
+      "wednesday",
+      "thursday",
+      "friday",
+      "saturday"
+    ][now.getDay()];
+    const currentTimeInMin = now.getHours() * 60 + now.getMinutes();
+
+    for (let service in data) {
+      for (let business of data[service]) {
+        const todayHours = business.hours[dayOfWeek];
+
+        let nextOpeningHours = null;
+        let isOpen = false;
+        let nextOpeningTime = 0;
+
+        for (const timeSlot of todayHours) {
+          const openingTime = timeSlot.open;
+          const closingTime = timeSlot.close;
+
+          const [openingHours, openingMinutes] = openingTime.split(':').map(Number);
+          const openingTimeInMin = openingHours * 60 + openingMinutes;
+
+          const [closingHours, closingMinutes] = closingTime.split(':').map(Number);
+          const closingTimeInMin = closingHours * 60 + closingMinutes;
+
+          if (currentTimeInMin <= closingTimeInMin) {
+            nextOpeningHours = {
+              open: openingTime,
+              close: closingTime
+            };
+
+            isOpen = (currentTimeInMin >= openingTimeInMin) && (currentTimeInMin < closingTimeInMin);
+
+            if (isOpen) {
+              nextOpeningTime = closingTimeInMin - currentTimeInMin;
+            } else {
+              nextOpeningTime = openingTimeInMin - currentTimeInMin;
             }
-            {% unless forloop.last %},{% endunless %}{% endfor %}]
-      }
-      {% unless forloop.last %},{% endunless %}{% endfor %}];
 
-  const now = new Date();
-  const dayOfWeek = [
-    "sunday",
-    "monday",
-    "tuesday",
-    "wednesday",
-    "thursday",
-    "friday",
-    "saturday"
-  ][now.getDay()];
-  const currentTimeInMin = now.getHours() * 60 + now.getMinutes();
-
-  for (const chowHall of chowHalls) {
-    const todayHours = chowHall.hours.find(hours => hours.day === dayOfWeek);
-
-    let nextOpeningHours = null;
-    let isOpen = false;
-    let nextOpeningTime = null;
-
-    for (const timeSlot of todayHours.times) {
-      const openingTime = timeSlot.open;
-      const closingTime = timeSlot.close;
-
-      const [openingHours, openingMinutes] = openingTime.split(':').map(Number);
-      const openingTimeInMin = openingHours * 60 + openingMinutes;
-
-      const [closingHours, closingMinutes] = closingTime.split(':').map(Number);
-      const closingTimeInMin = closingHours * 60 + closingMinutes;
-
-      if (currentTimeInMin <= closingTimeInMin) {
-        nextOpeningHours = {
-          open: openingTime,
-          close: closingTime
-        };
-        
-        isOpen = (currentTimeInMin >= openingTimeInMin);
-
-        if (isOpen) {
-          nextOpeningTime = closingTimeInMin - currentTimeInMin;
-        } else {
-          nextOpeningTime = openingTimeInMin - currentTimeInMin;
+            break;
+          }
         }
 
-        break;
+        const nextOpeningHour = Math.floor(nextOpeningTime / 60);
+        const nextOpeningMinute = nextOpeningTime % 60;
+        const nextOpeningTimeString = `${nextOpeningHour > 0 ? (nextOpeningHour + ' hr ') : ''}${nextOpeningMinute} min`;
+        const text = (nextOpeningTime > 0)
+          ? `${nextOpeningHours.open} - ${nextOpeningHours.close} (${isOpen ? 'Closes' : 'Opens'} in ${nextOpeningTimeString})`
+          : 'Closed for the day';
+
+        $(`#${slugify(service)}-hours`)
+          .append($('<div>')
+            .addClass(`time-slot p-2 mb-1 ${isOpen ? 'open' : 'close'}`)
+            .append($('<div>')
+              .addClass('indicator'))
+            .append($('<div>')
+              .addClass('info')
+              .append($('<h6>')
+                .text(business.name))
+              .append($('<p>')
+                .text(text)
+                .prop('title', text))));
       }
     }
-
-    const nextOpeningHour = Math.floor(nextOpeningTime / 60);
-    const nextOpeningMinute = nextOpeningTime % 60;
-    const nextOpeningTimeString = `${nextOpeningHour > 0 ? (nextOpeningHour + ' hr') : ''} ${nextOpeningMinute} min`;
-    const text = (nextOpeningTime !== null && nextOpeningTime > 0)
-      ? `${nextOpeningHours.open} - ${nextOpeningHours.close} (${isOpen ? 'Closes' : 'Opens'} in ${nextOpeningTimeString})`
-      : 'Closed for the day';
-
-    $('#chow-hall-hours').append($('<div>')
-      .addClass(`chow-hall-slot p-2 mb-1 ${isOpen ? 'open' : 'close'}`)
-      .append($('<div>')
-        .addClass('indicator'))
-      .append($('<div>')
-        .addClass('info')
-        .append($('<h6>')
-          .text(chowHall.name))
-        .append($('<p>')
-          .text(text))));
-  }
+  });
 </script>

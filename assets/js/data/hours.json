@@ -1,0 +1,30 @@
+---
+layout: compress
+swcache: true
+---
+
+{% assign businessGroups = site.data.businesses | where: "widget", "true" | group_by: "service_type" %}
+
+{
+{% for businessGroup in businessGroups %}
+  "{{ businessGroup.name }}": [
+  {% for business in businessGroup.items %}
+    {
+    "name": "{{ business.name }}",
+    "hours": {
+    {% for hour in business.hours %}
+      "{{ hour.day }}": [
+      {% for time in hour.times %}
+        {
+        "open": "{{ time.open }}",
+        "close": "{{ time.close }}"
+        }{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+      ]{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+    }
+    }{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+  ]{% unless forloop.last %},{% endunless %}
+{% endfor %}
+}

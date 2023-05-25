@@ -278,8 +278,6 @@ a#chow-widget-link {
 }
 
 .card.widget {
-  overflow: hidden;
-
   &::before {
     content: "";
     position: absolute;
@@ -315,13 +313,13 @@ a#chow-widget-link {
     }
   }
 
-  &.chow-widget {
-    #chow-hall-hours {
+  &.hours-widget {
+    .hours-list {
       position: relative;
       display: flex;
       flex-direction: column;
 
-      .chow-hall-slot {
+      .time-slot {
         display: flex;
         border-radius: $base-radius;
 
@@ -351,6 +349,15 @@ a#chow-widget-link {
           flex: 1;
           position: relative;
           margin-left: 10px;
+          min-width: 0;
+
+          h6, p {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
+            min-width: 0;
+          }
 
           h6 {
             margin-top: 0;
