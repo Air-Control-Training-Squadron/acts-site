@@ -6,15 +6,19 @@ refactor: false
 <!-- workaround for baseurl shenanigans -->
 <style>
   .jumbotron.hero {
-    --bg-url: url('{{ "/assets/img/mcagcc-aerial.jpg" | relative_url }}');
+    --bg-url: url('{{ "/assets/img/hero-background.jpg" | relative_url }}');
   }
 
   .hours-widget {
-    --bg-url: url('{{ "/assets/img/chow-hall-background.jpg" | relative_url }}');
+    --bg-url: url('{{ "/assets/img/hours-widget-background.jpg" | relative_url }}');
   }
 
   .contacts-widget {
-    --bg-url: url('{{ "/assets/img/marine-firefighter.jpg" | relative_url }}');
+    --bg-url: url('{{ "/assets/img/contacts-widget-background.jpg" | relative_url }}');
+  }
+
+  .links-widget {
+    --bg-url: url('{{ "/assets/img/links-widget-background.jpg" | relative_url }}');
   }
 </style>
 
@@ -29,6 +33,28 @@ refactor: false
 <br>
 <div class="container p-0">
   <div class="row">
+    <!-- quick links widget -->
+    <div class="col-lg-12 mb-4">
+      <div class="card h-100 widget links-widget">
+        <div class="card-body">
+          <h4 class="card-title text-center mt-0">Quick Links</h4>
+          <div class="d-flex justify-content-evenly">
+            <div class="quick-link">
+              <i class="fas fa-location-dot"></i>
+              Example
+            </div>
+            <div class="quick-link">
+              <i class="fas fa-location-dot"></i>
+              Example
+            </div>
+            <div class="quick-link">
+              <i class="fas fa-location-dot"></i>
+              Example
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- emergency contact widget -->
     <div class="col-lg-4 mb-4">
       <div class="card h-100 widget contacts-widget">
