@@ -61,18 +61,15 @@ refactor: false
         <div class="card-body text-center">
           <h4 class="card-title text-center mt-0">Emergency Numbers</h4>
           <div id="emergency-numbers" class="d-flex flex-column justify-content-between">
-            <div class="emergency-contact">
-              <div class="emergency-type">Squadron Duty Officer (SDO)</div>
+            {% assign emergencyContacts = site.data.contacts | where: "widget", "true" %}
+            {% for emergencyContact in emergencyContacts %}
+              <div class="emergency-contact">
+              <div class="emergency-type">{{ emergencyContact.name }}</div>
               <div class="emergency-number">
-                <a href="tel:7609543040">(760) 954-3040</a>
+                <a href="tel:{{ emergencyContact.phones[0] }}">{{ emergencyContact.phones[0] | phone_number }}</a>
               </div>
             </div>
-            <div class="emergency-contact">
-              <div class="emergency-type">Emergency Dispatch</div>
-              <div class="emergency-number">
-                <a href="tel:7608303333">(760) 830-3333</a>
-              </div>
-            </div>
+            {% endfor %}
           </div>
         </div>
       </div>

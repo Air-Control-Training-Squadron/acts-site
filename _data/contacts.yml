@@ -36,12 +36,14 @@
 - name: Squadron Duty Officer (SDO)
   service_type: police
   category: emergency
+  widget: true
   phones:
     - 7609543040
 
 - name: Emergency Dispatch
   service_type: police
   category: emergency
+  widget: true
   phones:
     - 7608303333
 
