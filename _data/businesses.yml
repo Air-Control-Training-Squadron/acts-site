@@ -563,6 +563,37 @@
       times: opened
   extra_hour: "For more information on the walk-in immunization clinic hours, visit the <a href='https://twentynine-palms.tricare.mil/About-Us' target='_blank' rel='noreferrer noopener'>Naval Hospital website</a>."
 
+- name: Dental Clinic
+  phone: 7608307054
+  website: https://twentynine-palms.tricare.mil/Health-Services/Dental
+  building_id: 35
+  service_type: medical
+  hours:
+    - day: monday
+      times:
+        - open: '07:00'
+          close: '16:00'
+    - day: tuesday
+      times:
+        - open: '07:00'
+          close: '16:00'
+    - day: wednesday
+      times:
+        - open: '07:00'
+          close: '16:00'
+    - day: thursday
+      times:
+        - open: '07:00'
+          close: '16:00'
+    - day: friday
+      times:
+        - open: '07:00'
+          close: '16:00'
+    - day: saturday
+      times: closed
+    - day: sunday
+      times: closed
+
 - name: Air Control Training Squadron
   phone: 7608303586
   building_id: 11
@@ -701,3 +732,22 @@
       times:
         - open: '09:00'
           close: '17:00'
+
+- name: Protestant Chapel
+  building_id: 22
+  service_type: religion
+  hours:
+    - day: monday
+      times: opened
+    - day: tuesday
+      times: opened
+    - day: wednesday
+      times: opened
+    - day: thursday
+      times: opened
+    - day: friday
+      times: opened
+    - day: saturday
+      times: opened
+    - day: sunday
+      times: opened
