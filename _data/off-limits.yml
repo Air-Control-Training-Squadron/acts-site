@@ -1,0 +1,67 @@
+- name: Smokey's Houka Shop
+  address: [6441 Adobe Road, Twentynine Palms]
+  coord: [34.136835716802196, -116.05402815864996]
+
+- name: The Auto Shoppe
+  address: [5972 Adobe Road, Twentynine Palms]
+  coord: [34.14529250899816, -116.05482978387147]
+
+- name: STC Smoke Shop
+  address: [6001 Adobe Road, Twentynine Palms]
+  coord: [34.13531094243975, -116.05412245225591]
+
+- name: Puff's Tobacco Mart
+  address: [57063 29 Palms Highway, Yucca Valley]
+  coord: [34.12112852713132, -116.41918288829828]
+
+- name: Puff's Tobacco Mart 2
+  address: [57602 29 Palms Highway, Yucca Valley]
+  coord: [34.12666867880448, -116.40751728395588]
+  
+- name: NYPD Pizza
+  address: [260-262 North Palm Canyon Drive, Palm Springs]
+  coord: [33.82587678779339, -116.5466841187358]
+
+- name: Sam's Smoke Shop
+  address: [1620 Main Street, Barstow] # Corrected the address (16520 West Main Street points to an empty road)
+  coord: [34.89369346798988, -117.04810345965733] # Place is permanently closed
+
+- name: Teazer's Bar & Grill Nightclub
+  address: [14269 Seventh Street, Victorville]
+  coord: [34.509824888455235, -117.31890617882581] # Points to a now-empty lot
+
+- name: Angelo's Kars
+  address: [222 & 226 S. Coast Highway, Oceanside]
+  coord: [33.193754299720105, -117.37723270485007]
+
+- name: Denny's Parking Lot
+  address: [692 E Street, Chula Vista]
+  coord: [32.63994453566856, -117.09664410978604]
+
+- name: Burger King & McDonald's
+  address: [S 28th Street (Parking Lots), San Diego]
+  coord: [32.69332421520926, -117.13423192599275]
+
+- name: Club Mustang
+  address: [2200 University Avenue, San Diego]
+  coord: [32.748628833661996, -117.14095066951045] # Points to a veterinary clinic ??
+
+- name: Get It On Shoppe
+  address: [3217 Mission Blvd, San Diego] # Address was missing, need confirmation this is the right place
+  coord: [32.77246894506048, -117.25111302520162]
+
+- name: Trolley Stations
+  address: Palomar Street & San Ysidro, San Diego
+  # This doesn't seem to have a singular definite location
+
+- name: Vulcan Baths
+  address: [805 W. Cedar Street, San Diego]
+  coord: [32.72177146867469, -117.17047766483074]  
+
+- name: Dream Crystal
+  address: [1536 Highland Avenue, National City]
+  coord: [32.67161836813481, -117.09667132754242]
+
+- name: Sports Auto Sales
+  address: [1111 National City Voulevard, National City]
+  coord: [32.67302401278665, -117.10545498617284] # Points to an empty lot, there's an Enterprise store nearby though
