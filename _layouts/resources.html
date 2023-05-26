@@ -7,15 +7,15 @@ layout: page
 <div class="accordion" id="resources">
   {% for category in resources %}
   <div class="accordion-item">
-    <h2 class="accordion-header" id="heading{{ category.name | slugify }}">
+    <h2 class="accordion-header" id="heading-{{ category.name | slugify }}">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-        data-bs-target="#collapse{{ category.name | slugify }}" aria-expanded="false"
-        aria-controls="collapse{{ category.name | slugify }}">
+        data-bs-target="#collapse-{{ category.name | slugify }}" aria-expanded="false"
+        aria-controls="collapse-{{ category.name | slugify }}">
         {{ site.data.locales[site.lang].resources.categories[category.name] }}
       </button>
     </h2>
-    <div id="collapse{{ category.name | slugify }}" class="accordion-collapse collapse"
-      aria-labelledby="heading{{ category.name | slugify }}" data-bs-parent="#resources">
+    <div id="collapse-{{ category.name | slugify }}" class="accordion-collapse collapse"
+      aria-labelledby="heading-{{ category.name | slugify }}" data-bs-parent="#resources">
       <div class="accordion-body container">
         <div class="row">
           {% for item in category.items %}
@@ -49,3 +49,12 @@ layout: page
   </div>
   {% endfor %}
 </div>
+
+<script>
+  $(function() {
+    var hash = window.location.hash;
+    if (hash) {
+      $(hash + " .accordion-button").click();
+    }
+  });
+</script>
