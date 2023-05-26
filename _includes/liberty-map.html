@@ -1,22 +1,22 @@
-<div class="accordion" id="accordionMap">
+<div class="accordion" id="liberty-limits-map">
   <div class="accordion-item">
-    <h2 class="accordion-header" id="headingMap">
+    <h2 class="accordion-header" id="heading-map">
       <button
         class="accordion-button collapsed"
         type="button"
         data-bs-toggle="collapse"
-        data-bs-target="#collapseMap"
+        data-bs-target="#collapse-map"
         aria-expanded="false"
-        aria-controls="collapseMap">
+        aria-controls="collapse-map">
         Liberty Limits Map
       </button>
     </h2>
 
     <div
-      id="collapseMap"
+      id="collapse-map"
       class="accordion-collapse collapse"
-      aria-labelledby="headingMap"
-      data-bs-parent="#accordionMap">
+      aria-labelledby="heading-map"
+      data-bs-parent="#liberty-limits-map">
       <div class="accordion-body container">
         <div id="map"></div>
         <br>
@@ -39,13 +39,13 @@
             type="button"
             class="btn btn-secondary btn-block mt-2 w-100">Check Distance</button>
           <div
-            id="spinnerDisplay"
+            id="spinner-display"
             class="justify-content-center align-items-center mt-2"
             style="height: 30px; display: none;">
             <i class="fas fa-spinner fa-2xl fa-spin"></i>
           </div>
           <blockquote
-            id="distanceDisplay"
+            id="distance-display"
             class="prompt-info mt-2 mb-0"
             style="display: none;">Distance:
           </blockquote>
@@ -64,7 +64,7 @@
   /* Size of map behaves erratically on a hidden div */
 
   /* This creates and resets the size of the map whenever the accordion is opened */
-  $('#collapseMap').on('shown.bs.collapse', function() {
+  $('#collapse-map').on('shown.bs.collapse', function() {
     if (! map) {
       initMap();
     } else {
@@ -130,8 +130,8 @@
   let marker;
   let line;
   function addressToLatLng() {
-    $('#spinnerDisplay').addClass('d-flex');
-    $('#distanceDisplay').hide();
+    $('#spinner-display').addClass('d-flex');
+    $('#distance-display').hide();
     const address = $('#address').val();
 
     fetch('https://nominatim.openstreetmap.org/search?format=json&q=' + address)
@@ -169,7 +169,7 @@
         const dist = Math.ceil(gatePoint.distanceTo(destPoint) / 1609);
 
         if (dist > 500) {
-          setPromptClass('#distanceDisplay', 'prompt-danger').html(`Distance: ${dist} miles.<br>Out of bounds.`);
+          setPromptClass('#distance-display', 'prompt-danger').html(`Distance: ${dist} miles.<br>Out of bounds.`);
           return;
         }
 
@@ -178,7 +178,7 @@
         const country = locationArray[locationArray.length - 1].trim();
 
         if (country === 'Mexico') {
-          setPromptClass('#distanceDisplay', 'prompt-danger').html(`Distance: ${dist} miles.<br>Location is in Mexico.`);
+          setPromptClass('#distance-display', 'prompt-danger').html(`Distance: ${dist} miles.<br>Location is in Mexico.`);
           return;
         }
 
@@ -194,14 +194,22 @@
           libBoundRange = "96 hour";
         }
 
-        setPromptClass('#distanceDisplay', 'prompt-info').html(`Distance: ${dist} miles.<br>Within ${libBoundRange} limits.`);
+        setPromptClass('#distance-display', 'prompt-info').html(`Distance: ${dist} miles.<br>Within ${libBoundRange} limits.`);
       })
       .catch(error => {
-        setPromptClass('#distanceDisplay').addClass('prompt-danger').text(`Error: "${error}"`);
+        setPromptClass('#distance-display').addClass('prompt-danger').text(`Error: "${error}"`);
       })
       . finally(() => {
-        $('#spinnerDisplay').removeClass('d-flex');
-        $('#distanceDisplay').show();
+        $('#spinner-display').removeClass('d-flex');
+        $('#distance-display').show();
       });
   }
+
+  /* Opens accordion if link refers to the id */
+  $(function() {
+    var hash = window.location.hash;
+    if (hash === '#liberty-limits-map') {
+      $('#liberty-limits-map .accordion-button').click();
+    }
+  });
 </script>
