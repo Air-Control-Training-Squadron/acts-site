@@ -39,18 +39,12 @@ refactor: false
         <div class="card-body">
           <h4 class="card-title text-center mt-0">Quick Links</h4>
           <div class="d-flex justify-content-evenly">
-            <div class="quick-link">
-              <i class="fas fa-location-dot"></i>
-              Example
-            </div>
-            <div class="quick-link">
-              <i class="fas fa-location-dot"></i>
-              Example
-            </div>
-            <div class="quick-link">
-              <i class="fas fa-location-dot"></i>
-              Example
-            </div>
+            {% for quickLink in site.data.quick-links %}
+              <div class="quick-link">
+                <i class="{{ quickLink.icon }}"></i>
+                <a href="{{ quickLink.link | relative_url }}">{{ quickLink.name }}</a>
+              </div>
+            {% endfor %}
           </div>
         </div>
       </div>

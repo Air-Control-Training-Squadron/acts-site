@@ -293,6 +293,12 @@ a#chow-widget-link {
     position: relative;
   }
 
+  &.links-widget {
+    .quick-link {
+      position: relative;
+    }
+  }
+
   &.contacts-widget {
     #emergency-numbers {
       position: relative;

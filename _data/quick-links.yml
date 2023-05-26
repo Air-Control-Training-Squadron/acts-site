@@ -1,0 +1,11 @@
+- name: Liberty Limits Map
+  icon: fas fa-location-dot
+  link: /liberty-guide/#liberty-limits-map
+
+- name: HARP Form
+  icon: far fa-file-pdf
+  link: /resources/#heading-forms
+
+- name: MOS Information
+  icon: fas fa-screwdriver-wrench
+  link: /about/#courses-information
