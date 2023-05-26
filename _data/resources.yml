@@ -99,3 +99,9 @@
   file_type: link
   description: "The maintenance request form for BEQ 1666."
   link: "https://docs.google.com/forms/d/e/1FAIpQLSeQJDx8HNxjj0NTJ7bxWos8WHywAskFcY-cYnFqIItZ2l6koQ/viewform?usp=sf_link"
+
+- name: "HARP Form"
+  category: forms
+  file_type: pdf
+  description: "The HARP form for ACTS. You can download it and fill it out. If you have Adobe Acrobat Reader DC, you can also digitally sign it."
+  link: "/assets/pdf/ELT_Students_HARPs_fillable.pdf"
