@@ -1,107 +1,107 @@
-- name: "SqdnO 1050.2A"
+- name: SqdnO 1050.2A
   category: squadron
   file_type: pdf
-  description: "ACTS' leave and liberty policies for students and permanent personnel."
-  link: "/assets/pdf/SqdnO_1050.2A_LEAVE_AND_LIBERTY_ORDER.pdf"
+  description: ACTS' leave and liberty policies for students and permanent personnel.
+  link: /assets/pdf/SqdnO_1050.2A_LEAVE_AND_LIBERTY_ORDER.pdf
 
-- name: "GruO 1 MCCES"
+- name: GruO 1 MCCES
   category: squadron
   file_type: pdf
-  description: "Rules on student behavior. Covers forbidden language, forbidden substances, barracks visitation rules, romantic contact rules, and more."
-  link: "/assets/pdf/GruO_1_MCCES.pdf"
+  description: Rules on student behavior. Covers forbidden language, forbidden substances, barracks visitation rules, romantic contact rules, and more.
+  link: /assets/pdf/GruO_1_MCCES.pdf
 
-- name: "Off Limit Establishments"
+- name: Off Limit Establishments
   category: squadron
   file_type: pdf
-  description: "Defines the off limit establishments when going off-base."
-  link: "/assets/pdf/Off-Limits_Est._2021.pdf"
+  description: Defines the off limit establishments when going off-base.
+  link: /assets/pdf/Off-Limits_Est._2021.pdf
 
-- name: "ACTS Map"
+- name: ACTS Map
   category: squadron
   file_type: img
-  description: "Official map of ACTS."
-  link: "/assets/img/ACTS_Map.png"
+  description: Official map of ACTS.
+  link: /assets/img/ACTS_Map.png
 
-- name: "MCCES Map"
+- name: MCCES Map
   category: squadron
   file_type: img
-  description: "Official map of MCCES."
-  link: "/assets/img/MCCES_Campus_Map.png"
+  description: Official map of MCCES.
+  link: /assets/img/MCCES_Campus_Map.png
 
 - name: MCAGCC Website
   category: squadron
   file_type: link
-  description: "Offical website of MCAGCC"
-  link: "https://www.29palms.marines.mil/"
+  description: Offical website of MCAGCC
+  link: https://www.29palms.marines.mil/
 
-- name: "Marine Online (MOL)"
+- name: Marine Online (MOL)
   category: training
   file_type: link
-  description: "Official USMC digital platform for Marines to access services for their professional career development."
-  link: "https://mol.tfs.usmc.mil/mol/UserHomeEntry.do"
+  description: Official USMC digital platform for Marines to access services for their professional career development.
+  link: https://mol.tfs.usmc.mil/mol/UserHomeEntry.do
 
-- name: "MarineNet"
+- name: MarineNet
   category: training
   file_type: link
-  description: "Official USMC e-learning system for training and education purposes."
-  link: "https://portal.marinenet.usmc.mil/content/mnet-portal/en.html"
+  description: Official USMC e-learning system for training and education purposes.
+  link: https://portal.marinenet.usmc.mil/content/mnet-portal/en.html
 
-- name: "Joint Knowledge Online (JKO)"
+- name: Joint Knowledge Online (JKO)
   category: training
   file_type: link
-  description: "Comprehensive source for joint training and continuing education for all DoD personnel."
-  link: "https://jkodirect.jten.mil/Atlas2/page/login/Login.jsf"
+  description: Comprehensive source for joint training and continuing education for all DoD personnel.
+  link: https://jkodirect.jten.mil/Atlas2/page/login/Login.jsf
 
-- name: "SOS Rides"
+- name: SOS Rides
   category: travel
   file_type: link
-  description: "Safe, reliable, and free transportation services for military personnel."
-  link: "https://sosride.org/schedule-ride/"
+  description: Safe, reliable, and free transportation services for military personnel.
+  link: https://sosride.org/schedule-ride/
 
-- name: "Palm Springs AMTRAK"
+- name: Palm Springs AMTRAK
   category: travel
   file_type: link
-  description: "Provides convenient railway transportation systems."
-  link: "https://www.amtrak.com/stations/psn"
+  description: Provides convenient railway transportation systems.
+  link: https://www.amtrak.com/stations/psn
 
-- name: "Palm Springs Airport"
+- name: Palm Springs Airport
   category: travel
   file_type: link
-  description: "Closest commercial airport to MCAGCC. Offers domestic flights."
-  link: "https://palmspringsairport.com/"
+  description: Closest commercial airport to MCAGCC. Offers domestic flights.
+  link: https://palmspringsairport.com/
 
-- name: "Defense Travel System (DTS)"
+- name: Defense Travel System (DTS)
   category: travel
   file_type: link
-  description: "Automates travel authorization, reservations, approvals, and travel orders for DoD personnel."
-  link: "https://dtsproweb.defensetravel.osd.mil/dts-app/pubsite/all/view/"
+  description: Automates travel authorization, reservations, approvals, and travel orders for DoD personnel.
+  link: https://dtsproweb.defensetravel.osd.mil/dts-app/pubsite/all/view/
 
-- name: "TRICARE"
+- name: TRICARE
   category: support
   file_type: link
-  description: "The health care program serving military personnel and their family."
-  link: "https://tricare.mil/"
+  description: The health care program serving military personnel and their family.
+  link: https://tricare.mil/
 
-- name: "Armed Services YMCA"
+- name: Armed Services YMCA
   category: support
   file_type: link
-  description: "Nonprofit organization committed to strengthening military families through hands-on programming."
-  link: "https://29palms.asymca.org/?hsLang=en"
+  description: Nonprofit organization committed to strengthening military families through hands-on programming.
+  link: https://29palms.asymca.org/?hsLang=en
 
-- name: "myPay"
+- name: myPay
   category: support
   file_type: link
-  description: "Online tool for managing pay information, making pay changes, and reviewing pay statements and tax information."
-  link: "https://mypay.dfas.mil/#/"
+  description: Online tool for managing pay information, making pay changes, and reviewing pay statements and tax information.
+  link: https://mypay.dfas.mil/#/
 
-- name: "Maintenance Request Form (Bldg 1666)"
+- name: Maintenance Request Form (Bldg 1666)
   category: forms
   file_type: link
-  description: "The maintenance request form for BEQ 1666."
-  link: "https://docs.google.com/forms/d/e/1FAIpQLSeQJDx8HNxjj0NTJ7bxWos8WHywAskFcY-cYnFqIItZ2l6koQ/viewform?usp=sf_link"
+  description: The maintenance request form for BEQ 1666.
+  link: https://docs.google.com/forms/d/e/1FAIpQLSeQJDx8HNxjj0NTJ7bxWos8WHywAskFcY-cYnFqIItZ2l6koQ/viewform?usp=sf_link
 
-- name: "HARP Form"
+- name: HARP Form
   category: forms
   file_type: pdf
-  description: "The HARP form for ACTS. You can download it and fill it out. If you have Adobe Acrobat Reader DC, you can also digitally sign it."
-  link: "/assets/pdf/ELT_Students_HARPs_fillable.pdf"
+  description: The HARP form for ACTS. You can download it and fill it out. If you have Adobe Acrobat Reader DC, you can also digitally sign it.
+  link: /assets/pdf/ELT_Students_HARPs_fillable.pdf
