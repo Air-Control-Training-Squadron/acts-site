@@ -38,13 +38,19 @@ refactor: false
       <div class="card h-100 widget links-widget">
         <div class="card-body">
           <h4 class="card-title text-center mt-0">Quick Links</h4>
-          <div class="d-flex justify-content-evenly">
-            {% for quickLink in site.data.quick-links %}
-              <div class="quick-link">
-                <i class="{{ quickLink.icon }}"></i>
-                <a href="{{ quickLink.link | relative_url }}">{{ quickLink.name }}</a>
-              </div>
-            {% endfor %}
+          <div class="container p-0">
+            <div class="row">
+              {% for quickLink in site.data.quick-links %}
+                <div class="col-lg-4 mb-2">
+                  <a href="{{ quickLink.link | relative_url }}">
+                    <div class="quick-link text-center">
+                      <i class="{{ quickLink.icon }}" style="color:var(--text-color);"></i>
+                      {{ quickLink.name }}
+                    </div>
+                  </a>
+                </div>
+              {% endfor %}
+            </div>
           </div>
         </div>
       </div>
@@ -58,11 +64,11 @@ refactor: false
             {% assign emergencyContacts = site.data.contacts | where: "widget", "true" %}
             {% for emergencyContact in emergencyContacts %}
               <div class="emergency-contact">
-              <div class="emergency-type">{{ emergencyContact.name }}</div>
-              <div class="emergency-number">
-                <a href="tel:{{ emergencyContact.phones[0] }}">{{ emergencyContact.phones[0] | phone_number }}</a>
+                <div class="emergency-type">{{ emergencyContact.name }}</div>
+                <div class="emergency-number">
+                  <a href="tel:{{ emergencyContact.phones[0] }}">{{ emergencyContact.phones[0] | phone_number }}</a>
+                </div>
               </div>
-            </div>
             {% endfor %}
           </div>
         </div>
@@ -177,23 +183,30 @@ refactor: false
 
         const nextOpeningHour = Math.floor(nextOpeningTime / 60);
         const nextOpeningMinute = nextOpeningTime % 60;
-        const nextOpeningTimeString = `${nextOpeningHour > 0 ? (nextOpeningHour + ' hr ') : ''}${nextOpeningMinute} min`;
+        const nextOpeningTimeString = `${
+          nextOpeningHour > 0
+            ? (nextOpeningHour + ' hr ')
+            : ''
+          }${nextOpeningMinute} min`;
         const text = (nextOpeningTime > 0)
-          ? `${nextOpeningHours.open} - ${nextOpeningHours.close} (${isOpen ? 'Closes' : 'Opens'} in ${nextOpeningTimeString})`
+          ? `${
+            nextOpeningHours.open
+          } - ${
+            nextOpeningHours.close
+          } (${
+            isOpen
+              ? 'Closes'
+              : 'Opens'
+            } in ${nextOpeningTimeString})`
           : 'Closed for the day';
 
-        $(`#${slugify(service)}-hours`)
-          .append($('<div>')
-            .addClass(`time-slot p-2 mb-1 ${isOpen ? 'open' : 'close'}`)
-            .append($('<div>')
-              .addClass('indicator'))
-            .append($('<div>')
-              .addClass('info')
-              .append($('<h6>')
-                .text(business.name))
-              .append($('<p>')
-                .text(text)
-                .prop('title', text))));
+        $(`#${
+          slugify(service)
+        }-hours`).append($('<div>').addClass(`time-slot p-2 mb-1 ${
+          isOpen
+            ? 'open'
+            : 'close'
+          }`).append($('<div>').addClass('indicator')).append($('<div>').addClass('info').append($('<h6>').text(business.name)).append($('<p>').text(text).prop('title', text))));
       }
     }
   });

@@ -278,6 +278,8 @@ a#chow-widget-link {
 }
 
 .card.widget {
+  overflow: hidden;
+
   &::before {
     content: "";
     position: absolute;
