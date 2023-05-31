@@ -4,6 +4,7 @@ permalink: '/app.js'
 ---
 
 const $notification = $('#notification');
+const $notificationDialog = $('#notification-dialog');
 const $btnRefresh = $('#notification .toast-body>button');
 
 if ('serviceWorker' in navigator) {
@@ -13,7 +14,6 @@ if ('serviceWorker' in navigator) {
 
             /* in case the user ignores the notification */
             if (registration.waiting) {
-                $notification[0].showModal();
                 $notification.toast('show');
             }
 
@@ -21,7 +21,6 @@ if ('serviceWorker' in navigator) {
                 registration.installing.addEventListener('statechange', () => {
                     if (registration.waiting) {
                         if (navigator.serviceWorker.controller) {
-                            $notification[0].showModal();
                             $notification.toast('show');
                         }
                     }
@@ -32,7 +31,6 @@ if ('serviceWorker' in navigator) {
                 if (registration.waiting) {
                     registration.waiting.postMessage('SKIP_WAITING');
                 }
-                $notification[0].close();
                 $notification.toast('hide');
             });
         });
@@ -48,7 +46,10 @@ if ('serviceWorker' in navigator) {
     });
 }
 
-$('#notification-close').click(() => {
-    $notification[0].close();
-    $notification.toast('hide');
+$notification.on('shown.bs.toast', function () {
+    $notificationDialog[0].showModal();
+});
+
+$notification.on('hidden.bs.toast', function () {
+    $notificationDialog[0].close();
 });
