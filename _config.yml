@@ -1,7 +1,11 @@
 # The Site Configuration
 
-# Import the theme
-theme: jekyll-theme-chirpy
+plugins:
+  - jekyll-paginate
+  - jekyll-redirect-from
+  - jekyll-seo-tag
+  - jekyll-archives
+  - jekyll-sitemap
 
 # The language of the webpage › http://www.lingoes.net/en/translator/langcode.htm
 # If it has the same name as one of the files in folder `_data/locales`, the layout language will also be changed,
@@ -20,9 +24,6 @@ tagline: Air Control Training Squadron # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
   A minimal, responsive and feature-rich Jekyll theme for technical writing.
-
-# fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: ""
 
 github:
   username: github_username # change to your github username
