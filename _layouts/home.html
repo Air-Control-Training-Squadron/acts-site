@@ -190,15 +190,15 @@ refactor: false
           }${nextOpeningMinute} min`;
         const text = (nextOpeningTime > 0)
           ? `${
-            nextOpeningHours.open
-          } - ${
-            nextOpeningHours.close
-          } (${
-            isOpen
-              ? 'Closes'
-              : 'Opens'
-            } in ${nextOpeningTimeString})`
-          : 'Closed for the day';
+          nextOpeningHours.open
+        } - ${
+          nextOpeningHours.close
+        } (${
+          isOpen
+            ? 'Closes'
+            : 'Opens'
+          } in ${nextOpeningTimeString})`
+        : 'Closed for the day';
 
         $(`#${
           slugify(service)
