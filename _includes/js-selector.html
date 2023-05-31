@@ -61,17 +61,19 @@
 
 {% include jsdelivr-combine.html urls=urls %}
 
+<script defer src="{{ '/assets/js/dist/commons.min.js' | relative_url }}"></script>
+
 {% case page.layout %}
   {% when 'home', 'categories', 'post', 'page', 'base-map', 'liberty-guide' %}
     {% assign js = page.layout %}
   {% when 'archives', 'category', 'tag' %}
     {% assign js = 'misc' %}
-  {% else %}
-    {% assign js = 'commons' %}
 {% endcase %}
 
-{% capture script %}/assets/js/dist/{{ js }}.min.js{% endcapture %}
-<script defer src="{{ script | relative_url }}"></script>
+{% if js %}
+  {% capture script %}/assets/js/dist/{{ js }}.min.js{% endcapture %}
+    <script defer src="{{ script | relative_url }}"></script>
+{% endif %}
 
 {% if page.math %}
   <!-- MathJax -->
