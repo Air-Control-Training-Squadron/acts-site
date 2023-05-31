@@ -2,6 +2,7 @@ import babel from '@rollup/plugin-babel';
 import terser from '@rollup/plugin-terser';
 import license from 'rollup-plugin-license';
 import path from 'path';
+import glob from 'glob';
 
 const JS_SRC = '_javascript';
 const JS_DIST = 'assets/js/dist';
@@ -13,7 +14,7 @@ function build(filename) {
     output: {
       file: `${JS_DIST}/${filename}.min.js`,
       format: 'iife',
-      name: 'Chirpy',
+      name: 'ACTS',
       sourcemap: !isProd
     },
     watch: {
@@ -36,11 +37,9 @@ function build(filename) {
   };
 }
 
-export default [
-  build('commons'),
-  build('home'),
-  build('categories'),
-  build('page'),
-  build('post'),
-  build('misc')
-];
+const files = glob.sync(`${JS_SRC}/*.js`);
+
+export default files.map(file => {
+  const filename = path.basename(file, '.js');
+  return build(filename);
+});

@@ -5,3 +5,6 @@ export { imgPopup } from './components/img-popup';
 export { initLocaleDatetime } from './components/locale-datetime';
 export { initPageviews } from './components/pageviews';
 export { toc } from './components/toc';
+export { initWidgets } from './components/widgets';
+export { initBaseMap } from './components/base-map';
+export { initLibertyMap } from './components/liberty-map';
