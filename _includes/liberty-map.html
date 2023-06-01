@@ -20,7 +20,7 @@
       <div class="accordion-body container">
         <div id="liberty-map" class="map"></div>
         <br>
-        <form onsubmit="event.preventDefault(); addressToLatLng();">
+        <form id="liberty-map-form">
           <div class="form-group">
             <label for="address">Address</label>
             <input
@@ -35,7 +35,7 @@
             </small>
           </div>
           <button
-            onclick="event.preventDefault(); addressToLatLng();"
+            id="liberty-map-button"
             type="button"
             class="btn btn-secondary btn-block mt-2 w-100">Check Distance</button>
           <div
