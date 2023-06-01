@@ -122,6 +122,11 @@ export function sidebarExpand() {
       });
   });
 
+  document.addEventListener('touchmove', e => {
+    if (SidebarUtil.isDragging)
+      e.preventDefault();
+  }, { passive: false });
+
   $(document).on('touchend', () => {
     if (isProcessed) return;
 
