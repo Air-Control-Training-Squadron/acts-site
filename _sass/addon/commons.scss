@@ -709,6 +709,7 @@ mjx-container {
 /* --- sidebar layout --- */
 
 $sidebar-display: 'sidebar-display';
+$sidebar-dragging: 'sidebar-dragging';
 $btn-gap: 0.8rem; // for the bottom icons
 $btn-border-width: 3px;
 $btn-mb: 0.5rem;
@@ -1319,30 +1320,41 @@ $btn-mb: 0.5rem;
     }
   }
 
+  #sidebar {
+    @include slide;
+
+    transform: translateX(calc(clamp(0px, var(--sidebar-offset), #{$sidebar-width}) - #{$sidebar-width})); /* hide */
+  }
+
+  #main-wrapper {
+    @include slide;
+
+    transform: translateX(calc(clamp(0px, var(--sidebar-offset), #{$sidebar-width})));
+  }
+
+  [#{$sidebar-dragging}] {
+    #sidebar {
+      transition: none;
+    }
+
+    #main-wrapper {
+      transition: none;
+    }
+  }
+
   [#{$sidebar-display}] {
     #sidebar {
-      transform: translateX(0);
+      transform: translateX(calc(clamp(-#{$sidebar-width}, var(--sidebar-offset), 0px)));
     }
 
     #main-wrapper,
     footer {
-      transform: translateX(calc(#{$sidebar-width} + env(safe-area-inset-left)));
+      transform: translateX(calc(clamp(-#{$sidebar-width}, var(--sidebar-offset), 0px) + #{$sidebar-width} + env(safe-area-inset-left)));
     }
 
     #back-to-top {
       visibility: hidden;
     }
-  }
-
-  #sidebar {
-    @include slide;
-
-    transform: translateX(calc(-#{$sidebar-width} - env(safe-area-inset-left))); /* hide */
-    -webkit-transform: translateX(calc(-#{$sidebar-width} - env(safe-area-inset-left)));
-  }
-
-  #main-wrapper {
-    @include slide;
   }
 
   #topbar,
