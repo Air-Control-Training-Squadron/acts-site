@@ -1655,7 +1655,7 @@ $btn-mb: 0.5rem;
 .card {
   background: var(--card-bg);
 
-  --bs-card-border-color: var(--btn-border-color);
+  --bs-card-border-color: var(--main-border-color);
 
   .card-header {
     color: var(--header-color);

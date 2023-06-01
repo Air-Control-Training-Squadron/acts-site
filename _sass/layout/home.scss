@@ -262,11 +262,15 @@
         line-height: 1.2;
         letter-spacing: .25px;
         font-family: "Source Sans Pro", "Microsoft Yahei", sans-serif;
+        color: #F2AB27;
+        text-shadow: 1px 1px 2px black;
       }
 
       p {
         font-size: clamp(0.8rem, 2vw, 1rem);
         font-family: "Source Sans Pro", "Microsoft Yahei", sans-serif;
+        color: #FDD872;
+        text-shadow: 1px 1px 2px black;
       }
     }
   }
