@@ -90,6 +90,11 @@ refactor: false
                   {% assign slugifiedName = businessGroup.name | slugify %}
                   <h4 class="card-title text-center mt-0">{{ site.data.locales[site.lang].widget.hours[slugifiedName] }}</h4>
                   <div id="{{ businessGroup.name | slugify }}-hours" class="hours-list"></div>
+                  <div
+                    class="spinner justify-content-center align-items-center mt-2"
+                    style="height: 30px; display: none;">
+                    <i class="fas fa-spinner fa-2xl fa-spin"></i>
+                  </div>
                 </div>
               {% endfor %}
             </div>
@@ -112,7 +117,6 @@ refactor: false
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span class="sr-only">Next</span>
             </a>
-
           </div>
         </div>
       </div>

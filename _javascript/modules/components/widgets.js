@@ -10,7 +10,11 @@ function slugify(text) {
 }
 
 export function initWidgets() {
+  $('.spinner').show();
+
   fetch(assets.hoursJsonUrl).then(response => response.json()).then(data => {
+    $('.spinner').hide();
+
     const now = new Date();
     const dayOfWeek = [
       "sunday",
@@ -61,24 +65,21 @@ export function initWidgets() {
 
         const nextOpeningHour = Math.floor(nextOpeningTime / 60);
         const nextOpeningMinute = nextOpeningTime % 60;
-        const nextOpeningTimeString = `${nextOpeningHour > 0
-          ? (nextOpeningHour + ' hr ')
-          : ''
-          }${nextOpeningMinute} min`;
-        const text = (nextOpeningTime > 0)
-          ? `${nextOpeningHours.open
-          } - ${nextOpeningHours.close
-          } (${isOpen
-            ? 'Closes'
-            : 'Opens'
-          } in ${nextOpeningTimeString})`
-          : 'Closed for the day';
+        const nextOpeningTimeString = `${nextOpeningHour > 0 ? (nextOpeningHour + ' hr ') : ''}${nextOpeningMinute} min`;
+        const text = (nextOpeningTime > 0) ? `${nextOpeningHours.open} - ${nextOpeningHours.close} (${isOpen ? 'Closes' : 'Opens'} in ${nextOpeningTimeString})` : 'Closed for the day';
 
-        $(`#${slugify(service)
-          }-hours`).append($('<div>').addClass(`time-slot p-2 mb-1 ${isOpen
-            ? 'open'
-            : 'close'
-            }`).append($('<div>').addClass('indicator')).append($('<div>').addClass('info').append($('<h6>').text(business.name)).append($('<p>').text(text).prop('title', text))));
+        $(`#${slugify(service)}-hours`)
+          .append($('<div>')
+            .addClass(`time-slot p-2 mb-1 ${isOpen ? 'open' : 'close'}`)
+            .append($('<div>')
+              .addClass('indicator'))
+            .append($('<div>')
+              .addClass('info')
+              .append($('<h6>')
+                .text(business.name))
+              .append($('<p>')
+                .text(text)
+                .prop('title', text))));
       }
     }
   });
