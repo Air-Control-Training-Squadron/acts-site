@@ -65,7 +65,9 @@ export function sidebarExpand() {
   let touchStartY = null;
   let diffX = null;
   let diffY = null;
+  let deltaX = null;
   let isProcessed = false;
+  let lastTouchMoveX = null;
 
   document.documentElement.style.setProperty('--sidebar-offset', '0px');
 
@@ -75,6 +77,8 @@ export function sidebarExpand() {
 
     touchStartX = e.originalEvent.touches[0].clientX;
     touchStartY = e.originalEvent.touches[0].clientY;
+    lastTouchMoveX = touchStartX;
+    deltaX = null;
 
     SidebarUtil.unlock();
 
@@ -91,6 +95,9 @@ export function sidebarExpand() {
 
     diffX = touchMoveX - touchStartX;
     diffY = touchMoveY - touchStartY;
+
+    deltaX = touchMoveX - lastTouchMoveX;
+    lastTouchMoveX = touchMoveX;
 
     // Threshold
     if (!SidebarUtil.isLocked && Math.abs(diffX) < 1 && Math.abs(diffY) < 1) {
@@ -121,9 +128,9 @@ export function sidebarExpand() {
     if (SidebarUtil.isDragging) {
       const threshold = SIDEBAR_WIDTH / 2;
 
-      if (diffX > threshold) {
+      if (diffX > threshold || (deltaX !== null && deltaX > 7)) {
         SidebarUtil.expand();
-      } else if (diffX < -threshold) {
+      } else if (diffX < -threshold || (deltaX !== null && deltaX < -7)) {
         SidebarUtil.collapse();
       }
     }
