@@ -703,6 +703,35 @@
     - day: sunday
       times: opened
 
+- name: Student IPAC
+  building_id: 36
+  service_type: offices
+  hours:
+    - day: monday
+      times:
+        - open: '08:00'
+          close: '16:00'
+    - day: tuesday
+      times:
+        - open: '08:00'
+          close: '16:00'
+    - day: wednesday
+      times:
+        - open: '08:00'
+          close: '16:00'
+    - day: thursday
+      times:
+        - open: '08:00'
+          close: '16:00'
+    - day: friday
+      times:
+        - open: '08:00'
+          close: '16:00'
+    - day: saturday
+      times: closed
+    - day: sunday
+      times: closed
+
 - name: Catholic Chapel
   phone: 7608306464
   building_id: 21
