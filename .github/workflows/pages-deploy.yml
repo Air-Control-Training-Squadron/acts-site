@@ -47,7 +47,7 @@ jobs:
         run: npm ci  # npm ci is faster and more reliable for CI
 
       - name: Run build script
-        run: npm run build
+        run: cross-env NODE_ENV=production npm run build
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
