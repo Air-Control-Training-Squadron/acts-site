@@ -15,7 +15,7 @@ export function initLibertyMap() {
   });
 
   function initMap() {
-    map = L.map('map', { attributionControl: false }).setView(gatePoint, 5);
+    map = L.map('liberty-map', { attributionControl: false }).setView(gatePoint, 5);
 
     L.control.attribution({ prefix: false }).addTo(map);
 

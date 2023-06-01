@@ -6,7 +6,7 @@ layout: page
 
 {% for contactsGroup in contacts %}
   <h3>{{ site.data.locales[site.lang].contacts.categories[contactsGroup.name] }}</h3>
-  <div class="table-wrapper" id="contacts-table">
+  <div class="table-wrapper overflow-x-auto" id="contacts-table">
     <table style="width: 100%">
       <thead>
         <tr>

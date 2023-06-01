@@ -9,6 +9,8 @@ const SIDEBAR_WIDTH = 260;
 
 class SidebarUtil {
   static isExpanded = false;
+  static isDragging = false;
+  static isLocked = false;
 
   static toggle() {
     if (SidebarUtil.isExpanded === false) {
@@ -33,11 +35,25 @@ class SidebarUtil {
   }
 
   static enableDragging() {
+    if (SidebarUtil.isLocked) return;
     $body.attr(ATTR_DRAGGING, '');
+
+    SidebarUtil.isDragging = true;
   }
 
   static disableDragging() {
+    if (SidebarUtil.isLocked) return;
     $body.removeAttr(ATTR_DRAGGING);
+
+    SidebarUtil.isDragging = false;
+  }
+
+  static lock() {
+    SidebarUtil.isLocked = true;
+  }
+
+  static unlock() {
+    SidebarUtil.isLocked = false;
   }
 }
 
@@ -46,33 +62,77 @@ export function sidebarExpand() {
   $('#mask').on('click', SidebarUtil.toggle);
 
   let touchStartX = null;
+  let touchStartY = null;
   let diffX = null;
+  let diffY = null;
+  let isProcessed = false;
 
   document.documentElement.style.setProperty('--sidebar-offset', '0px');
 
   $(document).on('touchstart', e => {
+    isProcessed = $(e.target).closest('.map').length > 0 || $(e.target).closest('.carousel').length > 0 || $(e.target).closest('.overflow-x-auto').length > 0;
+    if (isProcessed) return;
+
     touchStartX = e.originalEvent.touches[0].clientX;
-    document.documentElement.style.setProperty('--sidebar-offset', '0px');
-    SidebarUtil.enableDragging();
+    touchStartY = e.originalEvent.touches[0].clientY;
+
+    SidebarUtil.unlock();
+
+    requestAnimationFrame(() => {
+      document.documentElement.style.setProperty('--sidebar-offset', '0px');
+    });
   });
 
   $(document).on('touchmove', e => {
-    const touchMoveX = e.originalEvent.touches[0].clientX;
-    diffX = touchMoveX - touchStartX;
+    if (isProcessed) return;
 
-    document.documentElement.style.setProperty('--sidebar-offset', `${diffX}px`);
+    const touchMoveX = e.originalEvent.touches[0].clientX;
+    const touchMoveY = e.originalEvent.touches[0].clientY;
+
+    diffX = touchMoveX - touchStartX;
+    diffY = touchMoveY - touchStartY;
+
+    // Threshold
+    if (!SidebarUtil.isLocked && Math.abs(diffX) < 1 && Math.abs(diffY) < 1) {
+      touchStartX = touchMoveX;
+      touchStartY = touchMoveY;
+      diffX = 0;
+      diffY = 0;
+      return;
+    }
+
+    const isHorizontalSwipe = Math.abs(diffX) > Math.abs(diffY);
+    if (isHorizontalSwipe) {
+      SidebarUtil.enableDragging();
+      SidebarUtil.lock();
+    } else {
+      SidebarUtil.lock();
+    }
+
+    if (SidebarUtil.isDragging)
+      requestAnimationFrame(() => {
+        document.documentElement.style.setProperty('--sidebar-offset', `${diffX}px`);
+      });
   });
 
   $(document).on('touchend', () => {
-    document.documentElement.style.setProperty('--sidebar-offset', '0px');
+    if (isProcessed) return;
+
+    if (SidebarUtil.isDragging) {
+      const threshold = SIDEBAR_WIDTH / 2;
+
+      if (diffX > threshold) {
+        SidebarUtil.expand();
+      } else if (diffX < -threshold) {
+        SidebarUtil.collapse();
+      }
+    }
+
+    SidebarUtil.unlock();
     SidebarUtil.disableDragging();
 
-    const threshold = SIDEBAR_WIDTH / 2;
-
-    if (diffX > threshold) {
-      SidebarUtil.expand();
-    } else if (diffX < -threshold) {
-      SidebarUtil.collapse();
-    }
+    requestAnimationFrame(() => {
+      document.documentElement.style.setProperty('--sidebar-offset', '0px');
+    });
   });
 }

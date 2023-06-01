@@ -1,5 +1,5 @@
 export function initBaseMap() {
-  const map = L.map('map', { attributionControl: false }).setView([
+  const map = L.map('base-map', { attributionControl: false }).setView([
     34.2392, -116.0587
   ], 17);
 
