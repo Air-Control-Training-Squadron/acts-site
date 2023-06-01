@@ -39,12 +39,12 @@ export function initBaseMap() {
       event.preventDefault();
 
       $('html, body').animate({
-        scrollTop: $('#map').offset().top - offset
+        scrollTop: $('.map').offset().top - offset
       }, 100);
 
       var buildingId = $(this).data('building');
 
-      $('#map').get(0).scrollIntoView({ behavior: 'smooth' });
+      $('.map').get(0).scrollIntoView({ behavior: 'smooth' });
 
       var buildingData = data.features.find(function (feature) {
         return feature.properties.buildingId === buildingId;
@@ -58,7 +58,7 @@ export function initBaseMap() {
 
         map.flyToBounds(buildingLatLngs);
 
-        var mapHeight = $('#map').height();
+        var mapHeight = $('.map').height();
         var viewportHeight = $(window).height();
         var offset = (viewportHeight - mapHeight) / 2;
       }
