@@ -52,6 +52,12 @@
   description: Comprehensive source for joint training and continuing education for all DoD personnel.
   link: https://jkodirect.jten.mil/Atlas2/page/login/Login.jsf
 
+- name: ACTS Academic Schedule
+  category: training
+  file_type: pdf
+  description: Lists the course dates of ACTS
+  link: /assets/pdf/ACTS_Academic_Schedule.pdf
+
 - name: SOS Rides
   category: travel
   file_type: link
